@@ -12,7 +12,7 @@ const AppForm = (props) => {
       return
     } else if(queryStr.startsWith('toyhou.se')) {
       id = queryStr.split("/")[1]
-    } else if(queryStr.startsWith('https')) {
+    } else if(queryStr.startsWith('https') && queryStr.includes('toyhou.se')) {
       id = queryStr.split("/")[3]
     }
 
