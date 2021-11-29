@@ -12,6 +12,8 @@ function App() {
         <p>Mass download directly from Toyhouse</p>
         <AppForm setHasError={setHasError} />
         <Error display={hasError} />
+        <p className="text-primary" style={{display: !hasError ? "block" : "none"}}>
+            Welcome! Type a Toyhouse link in the input field to get started!</p>
       </div>
     </div>
   );

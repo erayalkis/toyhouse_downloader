@@ -5,16 +5,20 @@ const AppForm = (props) => {
 
   const handleSubmit = () => {
     props.setHasError(false)
-    
+
     let id = null;
-    if(queryStr.startsWith('https')) {
-      id = queryStr.split("/")[3] 
+    if(!queryStr.startsWith('https') && !queryStr.startsWith('toyhou.se')) {
+      props.setHasError(true)
+      return
     } else if(queryStr.startsWith('toyhou.se')) {
       id = queryStr.split("/")[1]
-    } else {
-      props.setHasError(true)
+    } else if(queryStr.startsWith('https')) {
+      id = queryStr.split("/")[3]
     }
-    console.log(id);
+
+    fetch(`http://127.0.0.1:3001/character/?id=${id}&gallery_only=true`)
+      .then(response => response.json())
+      .then(res => console.log(res))
   };
 
   return(

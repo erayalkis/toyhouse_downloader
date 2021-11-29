@@ -3,7 +3,7 @@ const Error = (props) => {
 
   return(
     <div style={{display: props.display ? "block" : "none"}}>
-      <small className="text-danger">Please pass in a Toyhouse link!</small>
+      <small className="text-danger">Please type in a Toyhouse link!</small>
     </div>
   )
 };
