@@ -1,3 +1,5 @@
+import JSZip from "jszip";
+import { saveAs } from 'file-saver';
 import { useState } from "react";
 
 const AppForm = (props) => {
@@ -18,7 +20,33 @@ const AppForm = (props) => {
 
     fetch(`http://127.0.0.1:3001/character/?id=${id}&gallery_only=true`)
       .then(response => response.json())
-      .then(res => console.log(res))
+      .then(response => {
+        if(response.status !== 402 || response.status !== 404) {
+          console.log(response.gallery);
+          let zip = new JSZip();
+
+          let imgFetch = new Promise((resolve, reject) => {
+            response.gallery.forEach((link, idx) => {
+            fetch(link)
+              .then(res => res.blob())
+              .then(res => {
+                console.log(res)
+                res.lastModifiedDate = new Date();
+                zip.file(`${idx}.jpg`, res, {base64:true})
+                if (idx === response.gallery.length -1) resolve();
+              })
+          })
+        })
+
+          imgFetch.then(() => {
+            zip.generateAsync({type:"blob"})
+            .then(content => {
+              saveAs(content, `${response.name}-images.zip`)
+            });
+          })
+
+        }
+      });
   };
 
   return(
