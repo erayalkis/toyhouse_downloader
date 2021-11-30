@@ -24,29 +24,61 @@ const AppForm = (props) => {
         if(response.status !== 402 || response.status !== 404) {
           let zip = new JSZip();
           console.log(response);
+          const promises = [];
 
-          let imgFetch = new Promise((resolve, reject) => {
-            response.gallery.forEach((link, idx) => {
-            fetch(link)
-              .then(res => res.blob())
-              .then(res => {
-                const filetype = link.split(".")[3]
-                console.log(res)
-                res.lastModifiedDate = new Date();
-                zip.file(`${idx}.${filetype}`, res, {base64:true})
-                if (idx === response.gallery.length -1) resolve();
-              })
-          })
-        })
+        //   let imgFetch = new Promise((resolve, reject) => {
+        //     response.gallery.forEach((link, idx) => {
+        //     fetch(link)
+        //       .then(res => res.blob())
+        //       .then(res => {
+        //         const fileType = link.split(".")[3]
+        //         console.log(res)
+        //         res.lastModifiedDate = new Date();
+        //         zip.file(`${response.name}/${idx}.${fileType}`, res)
+        //         console.log("saved!");
+        //         if (idx === response.gallery.length -1) resolve();
+        //       })
+        //   })
+        // })
 
-          imgFetch.then(() => {
-            zip.generateAsync({type:"blob"})
-            .then(content => {
-              saveAs(content, `${response.name}-images.zip`)
-            });
-          })
+        response.gallery.forEach(async (link, idx) => {
+          const linkPromise = new Promise(async (resolve, reject) => {
+            const response = await fetch(link);
+            const blob = await response.blob();
+            resolve({data: blob, type: link.split(".")[3]});
+          });
+          promises.push(linkPromise);
 
-        }
+          if(idx === response.gallery.length - 1 ) {
+            Promise.all(promises)
+            .then(data => {
+              console.log(data);
+              data.forEach((blob, idx) => zip.file(`${idx}.${blob.type}`, blob.data))
+            })
+            .then(data => {
+              zip.generateAsync({type:"blob"})
+                .then(content => {
+                  saveAs(content, `${response.name}-images.zip`)
+                })
+            })
+          }
+        });
+
+        console.log(promises);
+
+
+
+
+          // imgFetch.then(() => {
+          //   console.log("downloading!");
+          //   zip.generateAsync({type:"blob"})
+          //   .then(content => {
+          //     saveAs(content, `${response.name}-images.zip`)
+          //     console.log("downloaded!");
+          //   });
+          // })
+
+        } 
       });
   };
 
