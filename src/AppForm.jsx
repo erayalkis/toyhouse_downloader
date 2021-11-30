@@ -22,7 +22,7 @@ const AppForm = (props) => {
     }
 
     props.setLoading("Downloading images...")
-    fetch(`http://127.0.0.1:3001/character/?id=${id}&gallery_only=true`)
+    fetch(`https://toyhouse-rails-api.herokuapp.com/character/?id=${id}&gallery_only=true`)
       .then(response => { 
         return response.json()
       })
