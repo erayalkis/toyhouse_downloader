@@ -22,17 +22,18 @@ const AppForm = (props) => {
       .then(response => response.json())
       .then(response => {
         if(response.status !== 402 || response.status !== 404) {
-          console.log(response.gallery);
           let zip = new JSZip();
+          console.log(response);
 
           let imgFetch = new Promise((resolve, reject) => {
             response.gallery.forEach((link, idx) => {
             fetch(link)
               .then(res => res.blob())
               .then(res => {
+                const filetype = link.split(".")[3]
                 console.log(res)
                 res.lastModifiedDate = new Date();
-                zip.file(`${idx}.jpg`, res, {base64:true})
+                zip.file(`${idx}.${filetype}`, res, {base64:true})
                 if (idx === response.gallery.length -1) resolve();
               })
           })
