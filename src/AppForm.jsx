@@ -69,7 +69,7 @@ const AppForm = (props) => {
       <input type="text" className="form-control form-control-lg" placeholder="Toyhouse Link"
         value={queryStr} onChange={(e) => setQueryStr(e.target.value)} />
       <div className="input-group-append">
-        <button className="btn btn-outline-primary btn-lg" type="button" onClick={handleSubmit}>Button</button>
+        <button className="btn btn-outline-primary btn-lg" type="button" onClick={handleSubmit}>Download</button>
       </div>
     </div>
   )
