@@ -62,6 +62,7 @@ const AppForm = (props) => {
               props.setLoading(null);
               zip.generateAsync({type:"blob"})
                 .then(content => {
+                  setQueryStr("");
                   saveAs(content, `${response.name}-gallery.zip`)
                 })
             })
