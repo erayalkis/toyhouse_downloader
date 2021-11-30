@@ -26,21 +26,6 @@ const AppForm = (props) => {
           console.log(response);
           const promises = [];
 
-        //   let imgFetch = new Promise((resolve, reject) => {
-        //     response.gallery.forEach((link, idx) => {
-        //     fetch(link)
-        //       .then(res => res.blob())
-        //       .then(res => {
-        //         const fileType = link.split(".")[3]
-        //         console.log(res)
-        //         res.lastModifiedDate = new Date();
-        //         zip.file(`${response.name}/${idx}.${fileType}`, res)
-        //         console.log("saved!");
-        //         if (idx === response.gallery.length -1) resolve();
-        //       })
-        //   })
-        // })
-
         response.gallery.forEach(async (link, idx) => {
           const linkPromise = new Promise(async (resolve, reject) => {
             const response = await fetch(link);
@@ -65,19 +50,6 @@ const AppForm = (props) => {
         });
 
         console.log(promises);
-
-
-
-
-          // imgFetch.then(() => {
-          //   console.log("downloading!");
-          //   zip.generateAsync({type:"blob"})
-          //   .then(content => {
-          //     saveAs(content, `${response.name}-images.zip`)
-          //     console.log("downloaded!");
-          //   });
-          // })
-
         } 
       });
   };
