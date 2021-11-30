@@ -18,10 +18,14 @@ const AppForm = (props) => {
       id = queryStr.split("/")[3]
     }
 
+    props.setLoading("Downloading images...")
     fetch(`http://127.0.0.1:3001/character/?id=${id}&gallery_only=true`)
-      .then(response => response.json())
+      .then(response => { 
+        return response.json()
+      })
       .then(response => {
         if(response.status !== 402 || response.status !== 404) {
+          props.setLoading("Handling the gallery...")
           let zip = new JSZip();
           console.log(response);
           const promises = [];
@@ -30,17 +34,23 @@ const AppForm = (props) => {
           const linkPromise = new Promise(async (resolve, reject) => {
             const response = await fetch(link);
             const blob = await response.blob();
-            resolve({data: blob, type: link.split(".")[3]});
+            let dataType = link.split(".")[3]
+            if(dataType.length > 4) {
+              dataType = dataType.split("?")[0]
+            }
+            resolve({data: blob, type: dataType });
           });
           promises.push(linkPromise);
 
           if(idx === response.gallery.length - 1 ) {
+            props.setLoading("Saving files...")
             Promise.all(promises)
             .then(data => {
               console.log(data);
               data.forEach((blob, idx) => zip.file(`${idx}.${blob.type}`, blob.data))
             })
             .then(data => {
+              props.setLoading(null);
               zip.generateAsync({type:"blob"})
                 .then(content => {
                   saveAs(content, `${response.name}-images.zip`)
