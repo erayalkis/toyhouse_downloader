@@ -30,8 +30,9 @@ function App() {
     </div>
     
       <div>
-          <Limitations />
-          <Footer />
+        <hr className="w-75 mx-auto" />
+        <Limitations />
+        <Footer />
       </div>
     </div>
   );
