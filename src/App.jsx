@@ -6,7 +6,7 @@ import Footer from './Footer';
 import Limitations from './Limitations';
 
 function App() {
-  const [hasError, setHasError] = useState(false);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
   return (
@@ -15,10 +15,10 @@ function App() {
       <div className="card p-5">
         <p className="display-3">Toyhouse Downloader</p>
         <p>Mass download galleries directly from Toyhouse</p>
-        <AppForm setHasError={setHasError} setLoading={setLoading} />
-        <Error display={hasError} />
+        <AppForm setHasError={setError} setLoading={setLoading} />
+        <Error error={error} />
         <Loading loading={loading} />
-        <p className="text-primary" style={{display: !hasError && !loading ? "block" : "none"}}>
+        <p className="text-primary" style={{display: !error && !loading ? "block" : "none"}}>
             Welcome! Paste a Toyhouse link in the input field to get started!</p>
       </div>
 

@@ -10,12 +10,15 @@ const AppForm = (props) => {
 
     let id = null;
     if(!queryStr.startsWith('https') && !queryStr.startsWith('toyhou.se')) {
-      props.setHasError(true)
+      props.setHasError("Please paste in a valid Toyhouse link!")
       return
     } else if(queryStr.startsWith('toyhou.se')) {
       id = queryStr.split("/")[1]
-    } else if(queryStr.startsWith('https') && queryStr.includes('toyhou.se')) {
+    } else if(queryStr.startsWith('https://toyhou.se')) {
       id = queryStr.split("/")[3]
+    } else {
+      props.setHasError("Please paste in a valid Toyhouse link!")
+      return
     }
 
     props.setLoading("Downloading images...")
@@ -24,15 +27,22 @@ const AppForm = (props) => {
         return response.json()
       })
       .then(response => {
-        if(response.status !== 402 || response.status !== 404) {
+        if(response.status === 422 || response.status === 404) {
+          props.setLoading(null);
+          props.setHasError(response.msg);
+        } else {
           props.setLoading("Handling the gallery...")
           let zip = new JSZip();
-          console.log(response);
           const promises = [];
 
         response.gallery.forEach(async (link, idx) => {
           const linkPromise = new Promise(async (resolve, reject) => {
-            const response = await fetch(link);
+            let response = null;
+            try {
+              response = await fetch(link);
+            } catch(err) {
+              console.log(err);
+            }
             const blob = await response.blob();
             let dataType = link.split(".")[3]
             if(dataType.length > 4) {
@@ -46,21 +56,18 @@ const AppForm = (props) => {
             props.setLoading("Saving files...")
             Promise.all(promises)
             .then(data => {
-              console.log(data);
               data.forEach((blob, idx) => zip.file(`${idx}.${blob.type}`, blob.data))
             })
             .then(data => {
               props.setLoading(null);
               zip.generateAsync({type:"blob"})
                 .then(content => {
-                  saveAs(content, `${response.name}-images.zip`)
+                  saveAs(content, `${response.name}-gallery.zip`)
                 })
             })
           }
         });
-
-        console.log(promises);
-        } 
+      }
       });
   };
 

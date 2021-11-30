@@ -2,8 +2,12 @@
 const Error = (props) => {
 
   return(
-    <div style={{display: props.display ? "block" : "none"}}>
-      <small className="text-danger">Please type in a Toyhouse link!</small>
+    <div style={{display: props.error ? "block" : "none"}}>
+      { props.error ? 
+          <small className="text-danger">{props.error}</small>
+        :
+          null
+      }
     </div>
   )
 };
