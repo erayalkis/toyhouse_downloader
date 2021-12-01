@@ -15,7 +15,7 @@ function App() {
       <div className="card p-5">
         <p className="display-3">Toyhouse Downloader</p>
         <p>Mass download galleries directly from Toyhouse</p>
-        <AppForm setHasError={setError} setLoading={setLoading} />
+        <AppForm setHasError={setError} setLoading={setLoading} loading={loading} />
         <Error error={error} />
         <Loading loading={loading} />
         <p className="text-primary" style={{display: !error && !loading ? "block" : "none"}}>
