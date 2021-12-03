@@ -1,5 +1,15 @@
+import { useEffect } from "react";
 
 const AppStatus = (props) => {
+
+  useEffect(() => {
+    fetch('https://toyhouse-rails-api.herokuapp.com/app_status')
+      .then(res => {
+        if(res.ok) {
+          
+        }
+      })
+  }, []);
 
   return(
     <div>
