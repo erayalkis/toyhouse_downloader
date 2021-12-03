@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AppStatus from './AppStatus';
 import AppForm from './AppForm';
 import Error from './Error';
 import Loading from './Loading';
@@ -7,15 +8,17 @@ import Limitations from './Limitations';
 
 function App() {
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState("Fetching status...");
+  const [isOnline, setIsOnline] = useState(false);
 
   return (
     <div>
-    <div className="container text-center mt-5 w-75 body-bg-main mt-4">
+    <AppStatus isOnline={isOnline} setIsOnline={setIsOnline} loading={loading} />
+    <div className="container text-center mt-4 w-75 body-bg-main mt-4">
       <div className="card p-5">
         <p className="display-3">Toyhouse Downloader</p>
         <p>Mass download galleries directly from Toyhouse</p>
-        <AppForm setHasError={setError} setLoading={setLoading} loading={loading} />
+        <AppForm setHasError={setError} setLoading={setLoading} loading={loading} isOnline={isOnline} />
         <Error error={error} />
         <Loading loading={loading} />
         <p className="text-primary" style={{display: !error && !loading ? "block" : "none"}}>
