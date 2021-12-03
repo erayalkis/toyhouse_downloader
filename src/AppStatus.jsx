@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const AppStatus = (props) => {
-  const { setIsOnline, setLoading , setFetching } = props;
+  const { setIsOnline, setLoading , setFetching, setError } = props;
 
   useEffect(() => {
     fetch('https://toyhouse-rails-api.herokuapp.com/app_status')
@@ -16,8 +16,9 @@ const AppStatus = (props) => {
         setIsOnline(false);
         setLoading(null);
         setFetching(false);
+        setError("This app is currently down :(")
       });
-  }, [setIsOnline, setLoading, setFetching]);
+  }, [setIsOnline, setLoading, setFetching, setError]);
 
   return(
     <div>
