@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const AppStatus = (props) => {
-  const { setIsOnline, setLoading } = props;
+  const { setIsOnline, setLoading , setFetching } = props;
 
   useEffect(() => {
     fetch('https://toyhouse-rails-api.herokuapp.com/app_status')
@@ -9,18 +9,24 @@ const AppStatus = (props) => {
         if(res.ok) {
           setIsOnline(true);
           setLoading(null);
+          setFetching(false);
         }
       })
-  }, [setIsOnline, setLoading]);
+      .catch(err => {
+        setIsOnline(false);
+        setLoading(null);
+        setFetching(false);
+      });
+  }, [setIsOnline, setLoading, setFetching]);
 
   return(
     <div>
     <div className="d-flex justify-content-end me-2 mt-2">
-      <div className="d-flex">
+      <div className="d-flex me-1">
         <h6>App Status:</h6>
 
         { 
-        props.loading ? 
+        props.fetching ? 
           <h6 className="text-secondary ms-2">Fetching...</h6>
         :
         props.isOnline ?

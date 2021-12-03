@@ -9,11 +9,13 @@ import Limitations from './Limitations';
 function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState("Fetching status...");
+  const [fetching, setFetching] = useState(true);
   const [isOnline, setIsOnline] = useState(false);
 
   return (
     <div>
-    <AppStatus isOnline={isOnline} setIsOnline={setIsOnline} loading={loading} setLoading={setLoading} />
+    <AppStatus isOnline={isOnline} setIsOnline={setIsOnline} loading={loading} setLoading={setLoading} 
+      fetching={fetching} setFetching={setFetching} />
     <div className="container text-center mt-4 w-75 body-bg-main mt-4">
       <div className="card p-5">
         <p className="display-3">Toyhouse Downloader</p>
