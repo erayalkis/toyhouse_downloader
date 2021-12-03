@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 
 const AppStatus = (props) => {
+  const { setIsOnline, setLoading } = props;
 
   useEffect(() => {
     fetch('https://toyhouse-rails-api.herokuapp.com/app_status')
       .then(res => {
         if(res.ok) {
-          
+          setIsOnline(true);
+          setLoading(null);
         }
       })
-  }, []);
+  }, [setIsOnline, setLoading]);
 
   return(
     <div>
