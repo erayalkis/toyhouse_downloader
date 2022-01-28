@@ -86,4 +86,4 @@ if(idx === response.gallery.length - 1 ) {
 
 This app is written in React and plain Javascript for the fetch code and uses Bootstrap for styling. 
 To save the files to memory, I used [file-saver.js](https://github.com/eligrey/FileSaver.js/) and [JSZip](https://stuk.github.io/jszip/) to zip everything up and download it as a zip file.
-[My own Toyhouse API](https://github.com/Blissblass/toyhouse_rails_api) was used to gather all the necessary data for the characters.
+[My own Toyhouse API](https://github.com/Blissblass/toyhouse_rails_api) was used to gather all the necessary data for the characters so that it can be downloaded.
