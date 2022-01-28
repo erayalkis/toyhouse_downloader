@@ -20,7 +20,7 @@ const AppForm = (props) => {
     }
 
     props.setLoading("Downloading images...");
-    fetch(`https://toyhouse-rails-api.herokuapp.com/download_gallery/?id=${id}`)
+    fetch(`https://toyhouse-rails-api.herokuapp.com/cache_gallery/?id=${id}`)
       .then((response) => {
         return response.json();
       })
@@ -29,6 +29,8 @@ const AppForm = (props) => {
           props.setLoading(null);
           props.setHasError(response.msg);
         } else {
+          window.location = `https://toyhouse-rails-api.herokuapp.com/download_gallery/?id=${id}`;
+          setQueryStr("");
           props.setLoading("Gallery downloaded!");
           setTimeout(() => {
             props.setLoading(null);
@@ -36,6 +38,7 @@ const AppForm = (props) => {
         }
       })
       .catch((err) => {
+        console.log(err);
         props.setLoading(null);
         props.setHasError(
           "An error occured while downloading your gallery! :("
