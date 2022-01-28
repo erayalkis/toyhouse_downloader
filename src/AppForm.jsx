@@ -1,5 +1,3 @@
-import JSZip from "jszip";
-import { saveAs } from "file-saver";
 import { useState } from "react";
 
 const AppForm = (props) => {
@@ -22,9 +20,7 @@ const AppForm = (props) => {
     }
 
     props.setLoading("Downloading images...");
-    fetch(
-      `https://toyhouse-rails-api.herokuapp.com/character/?id=${id}&gallery_only=true`
-    )
+    fetch(`https://toyhouse-rails-api.herokuapp.com/download_gallery/?id=${id}`)
       .then((response) => {
         return response.json();
       })
