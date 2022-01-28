@@ -34,6 +34,19 @@ const AppForm = (props) => {
             props.setLoading(null);
           }, 3000);
         }
+      })
+      .catch((err) => {
+        props.setLoading(null);
+        props.setHasError(
+          "An error occured while downloading your gallery! :("
+        );
+
+        setTimeout(() => {
+          props.setHasError(null);
+          setQueryStr("");
+        }, 2000);
+
+        return false;
       });
   };
 
