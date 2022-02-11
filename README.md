@@ -1,6 +1,6 @@
 # README
 
-# Project: Toyhouse Downloader
+# Project: ToyScrape
 
 ![Main page for application](https://user-images.githubusercontent.com/80722863/147422603-55c4f824-f499-45d9-b988-b4c07c62ccc7.png)
 
