@@ -10,6 +10,13 @@ This app is a Gallery downloader for the character creating/sharing site [Toyhou
 
 Using this downloader app is quite simple! You only need the link of the character that you wish to download the gallery of. After pasting it in the input, simply clicking "Download" will fetch all the images for the user and download them in a zip folder for you!
 
+Sample Links:
+
+Since [Toyhouse](https://toyhou.se) is currently an invite only app, sample links are necessary to test the app without an account. Here's a few:
+* https://toyhou.se/37323.soggy-bread
+* https://toyhou.se/5873555.deity
+* https://toyhou.se/8583538.after-school-pride-flags
+
 # Challenges
 
 The main challenge that stumped me for a while was the way [file-saver.js](https://github.com/eligrey/FileSaver.js/) worked. As it simply waits for the fetch call to end rather than the blob object, it would download the zip file before actually getting all of the images for the character. This was a perfect opportunity to practice using **Promises**.
