@@ -1,8 +1,9 @@
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 import CheckURL from "./CheckURL";
+import CreatePromise from "./CreatePromise";
 
-const HandleSubmit = async (props, queryStr) => {
+const HandleSubmit = async (props, queryStr, setQueryStr) => {
   props.setHasError(false);
 
   let id = CheckURL(props, queryStr);
@@ -25,20 +26,7 @@ const HandleSubmit = async (props, queryStr) => {
         const promises = [];
 
         response.gallery.forEach(async (link, idx) => {
-          const linkPromise = new Promise(async (resolve, reject) => {
-            let response = null;
-            try {
-              response = await fetch(link);
-            } catch (err) {
-              console.log(err);
-            }
-            const blob = await response.blob();
-            let dataType = link.split(".")[3];
-            if (dataType.length > 4) {
-              dataType = dataType.split("?")[0];
-            }
-            resolve({ data: blob, type: dataType });
-          });
+          const linkPromise = CreatePromise(link);
           promises.push(linkPromise);
 
           if (idx === response.gallery.length - 1) {
@@ -53,6 +41,7 @@ const HandleSubmit = async (props, queryStr) => {
                 props.setLoading(null);
                 zip.generateAsync({ type: "blob" }).then((content) => {
                   saveAs(content, `${response.name}-gallery.zip`);
+                  setQueryStr("");
                 });
               });
           }
