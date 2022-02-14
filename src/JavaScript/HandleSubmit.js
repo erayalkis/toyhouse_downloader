@@ -1,21 +1,12 @@
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
+import CheckURL from "./CheckURL";
 
 const HandleSubmit = async (props, queryStr) => {
   props.setHasError(false);
 
-  let id = null;
-  if (!queryStr.startsWith("https") && !queryStr.startsWith("toyhou.se")) {
-    props.setHasError("Please paste in a valid Toyhouse link!");
-    return;
-  } else if (queryStr.startsWith("toyhou.se")) {
-    id = queryStr.split("/")[1];
-  } else if (queryStr.startsWith("https://toyhou.se")) {
-    id = queryStr.split("/")[3];
-  } else {
-    props.setHasError("Please paste in a valid Toyhouse link!");
-    return;
-  }
+  let id = CheckURL(props, queryStr);
+  if (!id) return;
 
   props.setLoading("Downloading images...");
   fetch(
