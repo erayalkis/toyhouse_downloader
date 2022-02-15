@@ -24,7 +24,7 @@ hr.toggler-line-2 {
 
 .toggler-button.toggler-active hr.toggler-line-1 {
   width: 45px;
-  transform: rotateZ(45deg) translate(11px, 9px);
+  transform: rotateZ(45deg) translate(10px, 9px);
 }
 
 .toggler-button.toggler-active hr.toggler-line-2 {

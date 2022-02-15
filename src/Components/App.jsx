@@ -17,9 +17,11 @@ function App() {
 
   return (
     <div>
-      {viewQueue && (
-        <QueueWindow useQueue={useQueue} setUseQueue={setUseQueue} />
-      )}
+      <QueueWindow
+        viewQueue={viewQueue}
+        useQueue={useQueue}
+        setUseQueue={setUseQueue}
+      />
       <div>
         <Nav
           isOnline={isOnline}

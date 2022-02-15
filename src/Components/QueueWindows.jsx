@@ -1,12 +1,17 @@
+import { useEffect } from "react";
 import "../Stylesheets/QueueWindow.css";
 
 const QueueWindow = (props) => {
-  const { useQueue, setUseQueue } = props;
+  const { viewQueue, useQueue, setUseQueue } = props;
+
+  useEffect(() => {
+    console.log(viewQueue);
+  }, [viewQueue]);
 
   return (
     <div>
       <div className="queue-bg"></div>
-      <div className="queue-window">
+      <div className={"queue-window" + (viewQueue ? " active" : "")}>
         <p className="display-6 queue-header">Character Queue</p>
 
         {useQueue ? (

@@ -26,6 +26,7 @@ const Nav = (props) => {
         fetching={fetching}
         setFetching={setFetching}
         setError={setError}
+        viewQueue={viewQueue}
       />
     </div>
   );

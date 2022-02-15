@@ -9,6 +9,9 @@
   align-items: center;
   backdrop-filter: blur(1.5px);
   border-right: 1px solid rgba(222, 222, 222, 0.7);
+  transform: translate(-500px);
+  transition: all 1s;
+  transition-property: transform, opacity;
 }
 
 .queue-bg {
@@ -22,4 +25,9 @@
 
 .queue-header {
   padding-top: 15px;
+}
+
+.queue-window.active {
+  opacity: 1;
+  transform: translate(0);
 }
