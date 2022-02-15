@@ -10,11 +10,12 @@ const Nav = (props) => {
     fetching,
     setFetching,
     setError,
+    setViewQueue,
   } = props;
 
   return (
     <div className="d-flex justify-content-between me-2 mt-2">
-      <QueueToggler />
+      <QueueToggler setViewQueue={setViewQueue} />
 
       <AppStatus
         isOnline={isOnline}
