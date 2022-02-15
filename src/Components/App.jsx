@@ -5,6 +5,7 @@ import Error from "./Error";
 import Loading from "./Loading";
 import Footer from "./Footer";
 import Limitations from "./Limitations";
+import QueueWindow from "./QueueWindows";
 
 function App() {
   const [error, setError] = useState(null);
@@ -24,6 +25,7 @@ function App() {
         setFetching={setFetching}
         setError={setError}
       />
+      <QueueWindow />
       <div className="container text-center mt-4 w-75 body-bg-main mt-4">
         <div className="card p-5">
           <p className="display-3">Toyhouse Downloader</p>

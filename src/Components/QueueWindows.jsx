@@ -1,5 +1,5 @@
 const QueueWindow = () => {
-  return <div></div>;
+  return <div>q</div>;
 };
 
 export default QueueWindow;
