@@ -16,7 +16,6 @@ function App() {
 
   return (
     <div>
-      <QueueWindow useQueue={useQueue} setUseQueue={setUseQueue} />
       <div>
         <Nav
           isOnline={isOnline}
