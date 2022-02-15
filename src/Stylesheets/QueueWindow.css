@@ -1,0 +1,25 @@
+.queue-window {
+  position: absolute;
+  z-index: 3;
+  width: 450px;
+  height: 100vh;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(1.5px);
+  border-right: 1px solid rgba(222, 222, 222, 0.7);
+}
+
+.queue-bg {
+  position: absolute;
+  width: 450px;
+  height: 100vh;
+  top: 0;
+  z-index: 2;
+  filter: blur(2px);
+}
+
+.queue-header {
+  padding-top: 15px;
+}
