@@ -9,6 +9,10 @@ hr[class^="toggler-line"] {
   transition-property: transform, width, opacity;
 }
 
+hr.toggler-line-2 {
+  transition: all 0.5s;
+}
+
 .toggler-button {
   width: 50px;
   cursor: pointer;
@@ -19,8 +23,8 @@ hr[class^="toggler-line"] {
 }
 
 .toggler-button.toggler-active hr.toggler-line-1 {
-  width: 20px;
-  transform: translate(9.5px, -0.3px);
+  width: 45px;
+  transform: rotateZ(45deg) translate(11px, 9px);
 }
 
 .toggler-button.toggler-active hr.toggler-line-2 {
@@ -28,6 +32,6 @@ hr[class^="toggler-line"] {
 }
 
 .toggler-button.toggler-active hr.toggler-line-3 {
-  width: 20px;
-  transform: translate(9.5px, -0.3px);
+  width: 45px;
+  transform: rotateZ(-45deg) translate(15px, -15px);
 }
