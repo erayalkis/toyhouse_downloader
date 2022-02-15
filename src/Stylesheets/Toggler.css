@@ -5,6 +5,8 @@ hr[class^="toggler-line"] {
   background-color: black;
   transform: scale(1);
   margin-top: 3px;
+  transition: all 1s;
+  transition-property: transform, width, opacity;
 }
 
 .toggler-button {
@@ -14,4 +16,18 @@ hr[class^="toggler-line"] {
   transition: transform 1s;
   margin-left: 10px;
   margin-top: 0;
+}
+
+.toggler-button.toggler-active hr.toggler-line-1 {
+  width: 20px;
+  transform: translate(9.5px, -0.3px);
+}
+
+.toggler-button.toggler-active hr.toggler-line-2 {
+  opacity: 0;
+}
+
+.toggler-button.toggler-active hr.toggler-line-3 {
+  width: 20px;
+  transform: translate(9.5px, -0.3px);
 }

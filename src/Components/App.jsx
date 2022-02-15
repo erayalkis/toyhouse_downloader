@@ -29,6 +29,7 @@ function App() {
           fetching={fetching}
           setFetching={setFetching}
           setError={setError}
+          viewQueue={viewQueue}
           setViewQueue={setViewQueue}
         />
         <div className="container text-center mt-4 w-75 body-bg-main mt-4">
