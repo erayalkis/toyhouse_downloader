@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div>
-      <QueueWindow />
+      <QueueWindow useQueue={useQueue} setUseQueue={setUseQueue} />
       <div>
         <AppStatus
           isOnline={isOnline}
