@@ -13,9 +13,13 @@ function App() {
   const [fetching, setFetching] = useState(true);
   const [isOnline, setIsOnline] = useState(false);
   const [useQueue, setUseQueue] = useState(false);
+  const [viewQueue, setViewQueue] = useState(false);
 
   return (
     <div>
+      {viewQueue && (
+        <QueueWindow useQueue={useQueue} setUseQueue={setUseQueue} />
+      )}
       <div>
         <Nav
           isOnline={isOnline}
