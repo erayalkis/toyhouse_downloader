@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AppStatus from "./AppStatus";
+import Nav from "./Nav";
 import AppForm from "./AppForm";
 import Error from "./Error";
 import Loading from "./Loading";
@@ -18,7 +18,7 @@ function App() {
     <div>
       <QueueWindow useQueue={useQueue} setUseQueue={setUseQueue} />
       <div>
-        <AppStatus
+        <Nav
           isOnline={isOnline}
           setIsOnline={setIsOnline}
           loading={loading}

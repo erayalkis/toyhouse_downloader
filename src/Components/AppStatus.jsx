@@ -23,20 +23,18 @@ const AppStatus = (props) => {
 
   return (
     <div>
-      <div className="d-flex justify-content-end me-2 mt-2">
-        <div className="d-flex me-1">
-          <h6>App Status:</h6>
+      <div className="d-flex me-1">
+        <h6>App Status:</h6>
 
-          {fetching ? (
-            <h6 className="text-secondary ms-2">Fetching...</h6>
-          ) : isOnline ? (
-            <h6 className="text-success ms-2">Online</h6>
-          ) : (
-            <h6 className="text-danger ms-2">Offline</h6>
-          )}
-        </div>
-        <br />
+        {fetching ? (
+          <h6 className="text-secondary ms-2">Fetching...</h6>
+        ) : isOnline ? (
+          <h6 className="text-success ms-2">Online</h6>
+        ) : (
+          <h6 className="text-danger ms-2">Offline</h6>
+        )}
       </div>
+      <br />
     </div>
   );
 };
