@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState("Fetching status...");
   const [fetching, setFetching] = useState(true);
   const [isOnline, setIsOnline] = useState(false);
+  const [useQueue, setUseQueue] = useState(false);
 
   return (
     <div>
