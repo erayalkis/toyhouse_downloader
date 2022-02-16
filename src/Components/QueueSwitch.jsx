@@ -8,7 +8,7 @@ const QueueSwitch = (props) => {
   return (
     <div className="form-check form-switch queue-switch">
       <input
-        class="form-check-input"
+        className="form-check-input"
         type="checkbox"
         id="flexSwitchCheckDefault"
         onClick={toggleQueue}
