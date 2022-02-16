@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CheckURL from "../JavaScript/CheckURL.js";
 import HandleSubmit from "../JavaScript/HandleSubmit.js";
+import MakeRequest from "../JavaScript/MakeRequest.js";
 
 const AppForm = (props) => {
   const [queryStr, setQueryStr] = useState("");
@@ -12,14 +13,16 @@ const AppForm = (props) => {
     HandleSubmit(setHasError, setLoading, queryStr, setQueryStr);
   };
 
-  const handleEnqueue = (e) => {
+  const handleEnqueue = async (e) => {
     const newId = CheckURL(queryStr);
     if (!newId) {
       setHasError("Please paste in a valid Toyhouse link!");
       return;
     }
 
-    console.log(newId);
+    const response = await MakeRequest(setHasError, setLoading, newId);
+
+    console.log(response);
   };
 
   return (
