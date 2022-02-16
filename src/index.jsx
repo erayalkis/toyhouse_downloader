@@ -1,6 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./Components/App";
+import QueueContext from "./Contexts/QueueContext";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const Index = () => {
+  const [queue, setQueue] = useState([]);
+
+  return (
+    <QueueContext.Provider value={{ queue, setQueue }}>
+      <App />
+    </QueueContext.Provider>
+  );
+};
+
+ReactDOM.render(<Index />, document.getElementById("root"));
