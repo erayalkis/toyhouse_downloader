@@ -6,14 +6,14 @@ const QueueSwitch = (props) => {
   const toggleQueue = () => setUseQueue((old) => !old);
 
   return (
-    <div class="form-check form-switch queue-switch">
+    <div className="form-check form-switch queue-switch">
       <input
         class="form-check-input"
         type="checkbox"
         id="flexSwitchCheckDefault"
         onClick={toggleQueue}
       />
-      <label class="form-check-label" for="flexSwitchCheckDefault">
+      <label class="form-check-label" htmlFor="flexSwitchCheckDefault">
         Toggle Queue
       </label>
     </div>

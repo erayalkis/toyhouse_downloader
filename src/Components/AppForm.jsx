@@ -1,14 +1,22 @@
 import { useState } from "react";
+import CheckURL from "../JavaScript/CheckURL.js";
 import HandleSubmit from "../JavaScript/HandleSubmit.js";
 
 const AppForm = (props) => {
   const [queryStr, setQueryStr] = useState("");
-  const { useQueue } = props;
+  const { useQueue, setHasError, setLoading } = props;
 
   const handleSubmit = () => {
     // This is honestly cursed but currently it was the easiest way to handle it
     // I'll change the code later on to make it more efficient
-    HandleSubmit(props, queryStr, setQueryStr);
+    HandleSubmit(setHasError, setLoading, queryStr, setQueryStr);
+  };
+
+  const handleEnqueue = (e) => {
+    const newId = CheckURL(queryStr);
+    if (!newId) return;
+
+    console.log(newId);
   };
 
   return (
@@ -28,7 +36,7 @@ const AppForm = (props) => {
           className="btn btn-outline-primary btn-lg"
           type="button"
           disabled={props.loading || !props.isOnline}
-          onClick={useQueue ? "handleAddToQueue" : handleSubmit}
+          onClick={useQueue ? handleEnqueue : handleSubmit}
         >
           {useQueue ? "Add To Queue" : "Download"}
         </button>
