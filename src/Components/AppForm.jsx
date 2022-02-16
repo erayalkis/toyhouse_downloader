@@ -14,7 +14,10 @@ const AppForm = (props) => {
 
   const handleEnqueue = (e) => {
     const newId = CheckURL(queryStr);
-    if (!newId) return;
+    if (!newId) {
+      setHasError("Please paste in a valid Toyhouse link!");
+      return;
+    }
 
     console.log(newId);
   };
