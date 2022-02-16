@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 
 const Index = () => {
-  const [queue, setQueue] = useState([]);
+  const [queue, setQueue] = useState(["a"]);
 
   return (
     <QueueContext.Provider value={{ queue, setQueue }}>

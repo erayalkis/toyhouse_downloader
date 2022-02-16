@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import { useEffect } from "react";
+import QueueContext from "../Contexts/QueueContext";
+import Characters from "./Characters";
 import "../Stylesheets/QueueWindow.css";
 
 const QueueWindow = (props) => {
   const { viewQueue, useQueue } = props;
+  const { queue } = useContext(QueueContext);
 
   useEffect(() => {
     console.log(viewQueue);
@@ -15,10 +19,11 @@ const QueueWindow = (props) => {
         <p className="display-6 queue-header">Character Queue</p>
 
         {useQueue ? (
-          <div className="queue-characters">
-            <div className="character">Poopie</div>
-            <div className="character">Testie</div>
-          </div>
+          queue.length ? (
+            <Characters queue={queue} />
+          ) : (
+            "No Queue"
+          )
         ) : (
           <p>Please enable the queue to use this window!</p>
         )}
