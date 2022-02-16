@@ -21,8 +21,11 @@ const AppForm = (props) => {
     }
 
     const response = await MakeRequest(setHasError, setLoading, newId);
+    setLoading("Adding character to queue...");
 
     console.log(response);
+    setLoading("");
+    setQueryStr("");
   };
 
   return (
