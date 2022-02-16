@@ -1,7 +1,9 @@
 const Characters = (props) => {
   const { queue } = props;
 
-  return queue.map((charaters) => <div>"test"</div>);
+  return queue.map((character) => (
+    <div key={character.id}>{character.name}</div>
+  ));
 };
 
 export default Characters;

@@ -2,10 +2,13 @@ import { useState } from "react";
 import CheckURL from "../JavaScript/CheckURL.js";
 import HandleSubmit from "../JavaScript/HandleSubmit.js";
 import MakeRequest from "../JavaScript/MakeRequest.js";
+import { useContext } from "react";
+import QueueContext from "../Contexts/QueueContext";
 
 const AppForm = (props) => {
   const [queryStr, setQueryStr] = useState("");
   const { useQueue, setHasError, setLoading } = props;
+  const { setQueue } = useContext(QueueContext);
 
   const handleSubmit = () => {
     // This is honestly cursed but currently it was the easiest way to handle it
@@ -23,7 +26,16 @@ const AppForm = (props) => {
     const response = await MakeRequest(setHasError, setLoading, newId);
     setLoading("Adding character to queue...");
 
-    console.log(response);
+    const { name, recent_images } = response;
+
+    const character = {
+      id: newId,
+      name,
+      picture_url: recent_images[0],
+    };
+
+    console.log(character);
+    setQueue((old) => [character, ...old]);
     setLoading("");
     setQueryStr("");
   };
