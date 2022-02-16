@@ -21,6 +21,11 @@
   top: 0;
   z-index: 2;
   filter: blur(2px);
+  visibility: hidden;
+}
+
+.queue-bg.active {
+  visibility: visible;
 }
 
 .queue-header {

@@ -10,7 +10,7 @@ const QueueWindow = (props) => {
 
   return (
     <div>
-      <div className="queue-bg"></div>
+      <div className={"queue-bg" + (viewQueue ? " active" : "")}></div>
       <div className={"queue-window" + (viewQueue ? " active" : "")}>
         <p className="display-6 queue-header">Character Queue</p>
 

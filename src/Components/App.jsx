@@ -31,9 +31,10 @@ function App() {
           viewQueue={viewQueue}
           setViewQueue={setViewQueue}
         />
+        <QueueSwitch />
+
         <div className="container text-center mt-4 w-75 body-bg-main mt-4">
           <div className="card p-5">
-            <QueueSwitch />
             <p className="display-3">Toyhouse Downloader</p>
             <p>Mass download galleries directly from Toyhouse</p>
             <AppForm
