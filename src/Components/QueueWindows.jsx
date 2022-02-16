@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { useEffect } from "react";
 import QueueContext from "../Contexts/QueueContext";
 import Characters from "./Characters";
 import "../Stylesheets/QueueWindow.css";
@@ -7,10 +6,6 @@ import "../Stylesheets/QueueWindow.css";
 const QueueWindow = (props) => {
   const { viewQueue, useQueue } = props;
   const { queue } = useContext(QueueContext);
-
-  useEffect(() => {
-    console.log(viewQueue);
-  }, [viewQueue]);
 
   return (
     <div>
