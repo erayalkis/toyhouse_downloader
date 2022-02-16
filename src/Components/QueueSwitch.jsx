@@ -1,9 +1,7 @@
-import { useState } from "react";
 import "../Stylesheets/QueueSwitch.css";
 
 const QueueSwitch = (props) => {
   const { setUseQueue } = props;
-  const [isChecked, setIsChecked] = useState(false);
 
   const toggleQueue = () => setUseQueue((old) => !old);
 
@@ -13,7 +11,6 @@ const QueueSwitch = (props) => {
         class="form-check-input"
         type="checkbox"
         id="flexSwitchCheckDefault"
-        checked={isChecked}
         onClick={toggleQueue}
       />
       <label class="form-check-label" for="flexSwitchCheckDefault">

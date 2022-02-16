@@ -42,6 +42,7 @@ function App() {
               setLoading={setLoading}
               loading={loading}
               isOnline={isOnline}
+              useQueue={useQueue}
             />
             <Error error={error} />
             <Loading loading={loading} />

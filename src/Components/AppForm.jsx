@@ -3,6 +3,7 @@ import HandleSubmit from "../JavaScript/HandleSubmit.js";
 
 const AppForm = (props) => {
   const [queryStr, setQueryStr] = useState("");
+  const { useQueue } = props;
 
   const handleSubmit = () => {
     // This is honestly cursed but currently it was the easiest way to handle it
@@ -27,9 +28,9 @@ const AppForm = (props) => {
           className="btn btn-outline-primary btn-lg"
           type="button"
           disabled={props.loading || !props.isOnline}
-          onClick={handleSubmit}
+          onClick={useQueue ? "handleAddToQueue" : handleSubmit}
         >
-          Download
+          {useQueue ? "Add To Queue" : "Download"}
         </button>
       </div>
     </div>
