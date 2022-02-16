@@ -6,6 +6,7 @@ import Loading from "./Loading";
 import Footer from "./Footer";
 import Limitations from "./Limitations";
 import QueueWindow from "./QueueWindows";
+import QueueSwitch from "./QueueSwitch";
 
 function App() {
   const [error, setError] = useState(null);
@@ -17,11 +18,7 @@ function App() {
 
   return (
     <div>
-      <QueueWindow
-        viewQueue={viewQueue}
-        useQueue={useQueue}
-        setUseQueue={setUseQueue}
-      />
+      <QueueWindow viewQueue={viewQueue} useQueue={useQueue} />
       <div>
         <Nav
           isOnline={isOnline}
@@ -36,6 +33,7 @@ function App() {
         />
         <div className="container text-center mt-4 w-75 body-bg-main mt-4">
           <div className="card p-5">
+            <QueueSwitch />
             <p className="display-3">Toyhouse Downloader</p>
             <p>Mass download galleries directly from Toyhouse</p>
             <AppForm

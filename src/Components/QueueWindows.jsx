@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "../Stylesheets/QueueWindow.css";
 
 const QueueWindow = (props) => {
-  const { viewQueue, useQueue, setUseQueue } = props;
+  const { viewQueue, useQueue } = props;
 
   useEffect(() => {
     console.log(viewQueue);
