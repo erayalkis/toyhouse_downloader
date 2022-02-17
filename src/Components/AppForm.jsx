@@ -40,7 +40,7 @@ const AppForm = (props) => {
     };
 
     console.log(character);
-    setQueue((old) => [character, ...old]);
+    setQueue((old) => [...old, character]);
     setLoading("");
     setQueryStr("");
   };
