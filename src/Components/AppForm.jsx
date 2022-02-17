@@ -23,15 +23,15 @@ const AppForm = (props) => {
       return;
     }
 
-    const response = await MakeRequest(setHasError, setLoading, newId);
+    const response = await MakeRequest(setHasError, setLoading, newId, true);
     setLoading("Adding character to queue...");
 
-    const { name, recent_images } = response;
+    const { name, profile_img } = response;
 
     const character = {
       id: newId,
       name,
-      picture_url: recent_images[0],
+      profile_img_url: profile_img,
     };
 
     console.log(character);
