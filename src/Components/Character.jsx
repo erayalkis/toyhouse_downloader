@@ -1,5 +1,5 @@
 const Character = (props) => {
-  const { id, name, imgURL } = props;
+  const { name, imgURL } = props;
 
   return (
     <div>
