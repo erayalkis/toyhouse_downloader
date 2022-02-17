@@ -1,4 +1,11 @@
+-webkit-scrollbar {
+  display: none;
+}
+
 .queue-thumbnail {
   width: 100px;
   object-fit: cover;
+}
+
+.character-container {
 }

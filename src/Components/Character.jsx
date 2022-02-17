@@ -4,7 +4,7 @@ const Character = (props) => {
   const { name, imgURL } = props;
 
   return (
-    <div className="d-flex align-items-center justify-content-between pt-2">
+    <div className="d-flex align-items-center justify-content-between pt-2 pb-2 character-container">
       <img
         className="img-fluid img-thumbnail queue-thumbnail"
         src={imgURL}

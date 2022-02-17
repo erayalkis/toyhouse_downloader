@@ -16,7 +16,7 @@
 
 .queue-bg {
   position: absolute;
-  width: 450px;
+  width: 35%;
   height: 100vh;
   top: 0;
   z-index: 2;
