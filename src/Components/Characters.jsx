@@ -9,6 +9,7 @@ const Characters = (props) => {
       {queue.map((character) => (
         <Character
           key={character.id}
+          id={character.id}
           name={character.name}
           imgURL={character.imgURL}
         />
