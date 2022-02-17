@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import QueueContext from "../Contexts/QueueContext";
+import QueueDownload from "./QueueDownload";
 import Characters from "./Characters";
 import "../Stylesheets/QueueWindow.css";
 
@@ -22,6 +23,8 @@ const QueueWindow = (props) => {
         ) : (
           <p>Please enable the queue to use this window!</p>
         )}
+
+        <QueueDownload />
       </div>
     </div>
   );
