@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import QueueContext from "../Contexts/QueueContext";
+import "../Stylesheets/QueueDownload.css";
 
 const QueueDownload = (props) => {
   const { queue } = useContext(QueueContext);
