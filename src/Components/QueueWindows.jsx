@@ -17,7 +17,7 @@ const QueueWindow = (props) => {
           queue.length ? (
             <Characters queue={queue} />
           ) : (
-            "No Queue"
+            "No characters in queue!"
           )
         ) : (
           <p>Please enable the queue to use this window!</p>
