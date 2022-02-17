@@ -8,7 +8,7 @@ import QueueContext from "../Contexts/QueueContext";
 const AppForm = (props) => {
   const [queryStr, setQueryStr] = useState("");
   const { useQueue, setHasError, setLoading } = props;
-  const { setQueue } = useContext(QueueContext);
+  const { queue, setQueue } = useContext(QueueContext);
 
   const handleSubmit = () => {
     // This is honestly cursed but currently it was the easiest way to handle it
@@ -20,6 +20,11 @@ const AppForm = (props) => {
     const newId = CheckURL(queryStr);
     if (!newId) {
       setHasError("Please paste in a valid Toyhouse link!");
+      return;
+    }
+
+    if (queue.some((character) => character.id === newId)) {
+      setHasError("Character is already in queue!");
       return;
     }
 
