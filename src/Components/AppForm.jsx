@@ -31,7 +31,7 @@ const AppForm = (props) => {
     const character = {
       id: newId,
       name,
-      profile_img_url: profile_img,
+      imgURL: profile_img,
     };
 
     console.log(character);
