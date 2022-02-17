@@ -24,7 +24,7 @@ const QueueWindow = (props) => {
           <p>Please enable the queue to use this window!</p>
         )}
 
-        <QueueDownload />
+        {useQueue && <QueueDownload />}
       </div>
     </div>
   );
