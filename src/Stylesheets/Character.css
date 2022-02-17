@@ -1,11 +1,16 @@
--webkit-scrollbar {
-  display: none;
+/* make scrollbar transparent */
+
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 .queue-thumbnail {
   width: 100px;
   object-fit: cover;
-}
-
-.character-container {
 }
