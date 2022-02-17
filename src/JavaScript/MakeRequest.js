@@ -4,6 +4,7 @@ const MakeRequest = async (
   id,
   detailsOnly = false
 ) => {
+  setHasError("");
   setLoading("Fetching character data...");
   let res;
   try {
