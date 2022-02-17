@@ -4,7 +4,7 @@ const Characters = (props) => {
   const { queue } = props;
 
   return (
-    <div className="">
+    <div className="w-75">
       {queue.map((character) => (
         <Character
           key={character.id}

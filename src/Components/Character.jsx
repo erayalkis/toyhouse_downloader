@@ -1,10 +1,12 @@
+import "../Stylesheets/Character.css";
+
 const Character = (props) => {
   const { name, imgURL } = props;
 
   return (
-    <div className="d-flex align-items-center justify-content-between">
+    <div className="d-flex align-items-center justify-content-between pt-2">
       <img
-        className="img-fluid w-75 h-75 img-thumbnail"
+        className="img-fluid img-thumbnail queue-thumbnail"
         src={imgURL}
         alt={`For ${name}`}
       />
