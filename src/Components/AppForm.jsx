@@ -39,7 +39,6 @@ const AppForm = (props) => {
       imgURL: profile_img,
     };
 
-    console.log(character);
     setQueue((old) => [...old, character]);
     setLoading("");
     setQueryStr("");
