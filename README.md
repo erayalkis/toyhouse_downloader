@@ -1,6 +1,6 @@
 # README
 
-# Project: Toyhouse Downloader
+# Project: ToyScrape
 
 ![Main page for application](https://user-images.githubusercontent.com/80722863/147422603-55c4f824-f499-45d9-b988-b4c07c62ccc7.png)
 
@@ -9,6 +9,13 @@ This app is a Gallery downloader for the character creating/sharing site [Toyhou
 # Usage
 
 Using this downloader app is quite simple! You only need the link of the character that you wish to download the gallery of. After pasting it in the input, simply clicking "Download" will fetch all the images for the user and download them in a zip folder for you!
+
+Sample Links:
+
+Since [Toyhouse](https://toyhou.se) is currently an invite only app, sample links are necessary to test the app without an account. Here's a few:
+* https://toyhou.se/37323.soggy-bread
+* https://toyhou.se/5873555.deity
+* https://toyhou.se/8583538.after-school-pride-flags
 
 # Challenges
 
