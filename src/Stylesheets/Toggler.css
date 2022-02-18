@@ -1,9 +1,8 @@
 hr[class^="toggler-line"] {
-  height: 3px;
+  height: 1px;
   width: 100%;
   color: black;
   background-color: black;
-  transform: scale(1);
   margin-top: 3px;
   transition: all 1s;
   transition-property: transform, width, opacity;
