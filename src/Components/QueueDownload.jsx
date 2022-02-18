@@ -1,7 +1,6 @@
-import { useEffect } from "react";
 import { useContext, useState } from "react";
 import QueueContext from "../Contexts/QueueContext";
-import DownloadQueue from "../JavaScript/DownloadQueue";
+import DownloadCharacter from "../JavaScript/DownloadCharacter";
 import "../Stylesheets/QueueDownload.css";
 
 const QueueDownload = (props) => {
@@ -10,14 +9,17 @@ const QueueDownload = (props) => {
 
   const handleClick = async () => {
     setDownloading(true);
+    console.log("Starting download...");
 
     for (let i = 0; i < queue.length; i++) {
       const currCharacter = queue[i];
-      console.log(currCharacter);
-      setQueue((old) =>
-        old.filter((character) => character.id !== currCharacter.id)
-      );
+      console.log("Fetching character...");
+      DownloadCharacter(currCharacter.id, setQueue);
+      console.log("Removing character...");
     }
+
+    console.log("Finish download...");
+    setDownloading(false);
   };
 
   return (
@@ -27,7 +29,7 @@ const QueueDownload = (props) => {
       disabled={!queue.length}
       onClick={handleClick}
     >
-      {downloading && queue.length ? "Pause Download" : "Start Download"}
+      {downloading ? "Download in progress..." : "Start Download"}
     </button>
   );
 };
