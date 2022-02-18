@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useContext, useState } from "react";
 import QueueContext from "../Contexts/QueueContext";
 import DownloadCharacter from "../JavaScript/DownloadCharacter";
@@ -6,6 +7,12 @@ import "../Stylesheets/QueueDownload.css";
 const QueueDownload = (props) => {
   const { queue, setQueue } = useContext(QueueContext);
   const [downloading, setDownloading] = useState(false);
+
+  useEffect(() => {
+    if (!queue.length) {
+      setDownloading(false);
+    }
+  }, [queue]);
 
   const handleClick = async () => {
     setDownloading(true);
@@ -19,14 +26,13 @@ const QueueDownload = (props) => {
     }
 
     console.log("Finish download...");
-    setDownloading(false);
   };
 
   return (
     <button
       type="button"
       className="btn queue-btn btn-outline-primary fixed-bottom"
-      disabled={!queue.length}
+      disabled={!queue.length || downloading}
       onClick={handleClick}
     >
       {downloading ? "Download in progress..." : "Start Download"}
