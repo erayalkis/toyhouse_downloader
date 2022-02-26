@@ -8,7 +8,7 @@ const AppStatus = (props) => {
       .then((res) => {
         if (res.ok) {
           setIsOnline(true);
-          setLoading(false);
+          setLoading(null);
         }
       })
       .catch((err) => {
@@ -23,7 +23,7 @@ const AppStatus = (props) => {
       <div className="d-flex me-1">
         <h6>App Status:</h6>
 
-        {loading ? (
+        {loading && loading === "Fetching status..." ? (
           <h6 className="text-secondary ms-2">Fetching...</h6>
         ) : isOnline ? (
           <h6 className="text-success ms-2">Online</h6>
