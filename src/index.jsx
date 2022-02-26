@@ -10,12 +10,16 @@ import ErrorContext from "./Contexts/ErrorContext";
 
 const Index = () => {
   const [queue, setQueue] = useState([]);
-  const [loading, setLoading] = useContext(LoadingContext);
-  const [error, setError] = useContext(ErrorContext);
+  const [loading, setLoading] = useState("Fetching data...");
+  const [error, setError] = useState(null);
 
   return (
     <QueueContext.Provider value={{ queue, setQueue }}>
-      <App />
+      <LoadingContext.Provider value={{ loading, setLoading }}>
+        <ErrorContext.Provider value={{ error, setError }}>
+          <App />
+        </ErrorContext.Provider>
+      </LoadingContext.Provider>
     </QueueContext.Provider>
   );
 };

@@ -7,8 +7,6 @@ const Nav = (props) => {
     setIsOnline,
     loading,
     setLoading,
-    fetching,
-    setFetching,
     setError,
     viewQueue,
     setViewQueue,
@@ -23,8 +21,6 @@ const Nav = (props) => {
         setIsOnline={setIsOnline}
         loading={loading}
         setLoading={setLoading}
-        fetching={fetching}
-        setFetching={setFetching}
         setError={setError}
         viewQueue={viewQueue}
       />

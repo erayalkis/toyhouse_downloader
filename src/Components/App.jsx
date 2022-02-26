@@ -11,7 +11,6 @@ import QueueSwitch from "./QueueSwitch";
 function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState("Fetching status...");
-  const [fetching, setFetching] = useState(true);
   const [isOnline, setIsOnline] = useState(false);
   const [useQueue, setUseQueue] = useState(false);
   const [viewQueue, setViewQueue] = useState(false);
@@ -25,8 +24,6 @@ function App() {
           setIsOnline={setIsOnline}
           loading={loading}
           setLoading={setLoading}
-          fetching={fetching}
-          setFetching={setFetching}
           setError={setError}
           viewQueue={viewQueue}
           setViewQueue={setViewQueue}
