@@ -16,6 +16,7 @@ Since [Toyhouse](https://toyhou.se) is currently an invite only app, sample link
 * https://toyhou.se/37323.soggy-bread
 * https://toyhou.se/5873555.deity
 * https://toyhou.se/8583538.after-school-pride-flags
+* https://toyhou.se/5450876.devil
 
 # Challenges
 
