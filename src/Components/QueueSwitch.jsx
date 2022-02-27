@@ -6,7 +6,7 @@ const QueueSwitch = (props) => {
   const toggleQueue = () => setUseQueue((old) => !old);
 
   return (
-    <div className="w-75">
+    <div className="w-75 switch-container">
       <div className="form-check form-switch queue-switch w-25">
         <input
           className="form-check-input"
