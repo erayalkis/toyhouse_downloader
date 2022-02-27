@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import QueueContext from "../Contexts/QueueContext";
 import DownloadCharacter from "../JavaScript/DownloadCharacter";
 import "../Stylesheets/QueueDownload.css";
@@ -16,7 +16,6 @@ const QueueDownload = (props) => {
 
   const handleClick = async () => {
     setDownloading(true);
-    console.log("Starting download...");
 
     for (let i = 0; i < queue.length; i++) {
       const currCharacter = queue[i];
@@ -24,8 +23,6 @@ const QueueDownload = (props) => {
       DownloadCharacter(currCharacter.id, setQueue);
       console.log("Removing character...");
     }
-
-    console.log("Finish download...");
   };
 
   return (
