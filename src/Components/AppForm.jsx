@@ -15,8 +15,6 @@ const AppForm = (props) => {
   const { queue, setQueue } = useContext(QueueContext);
 
   const handleSubmit = () => {
-    // This is honestly cursed but currently it was the easiest way to handle it
-    // I'll change the code later on to make it more efficient
     HandleSubmit(setError, setLoading, queryStr, setQueryStr);
   };
 

@@ -1,4 +1,4 @@
-const CheckURL = (queryStr) => {
+const useURLCheck = (queryStr) => {
   let id = null;
   if (!queryStr.startsWith("https") && !queryStr.startsWith("toyhou.se")) {
     return null;
@@ -13,4 +13,4 @@ const CheckURL = (queryStr) => {
   }
 };
 
-export default CheckURL;
+export default useURLCheck;
