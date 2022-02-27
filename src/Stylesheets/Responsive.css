@@ -1,3 +1,7 @@
+.app-form-mobile {
+  display: none;
+}
+
 .switch-container {
   width: 60%;
 }
@@ -11,6 +15,7 @@
   }
 
   .queue-switch {
+    margin-top: 3px;
     width: 150px;
   }
 
@@ -29,5 +34,18 @@
 
   .site-desc {
     font-size: 0.9em;
+  }
+
+  .app-form {
+    display: none;
+  }
+
+  .app-form-mobile {
+    display: block;
+  }
+
+  .app-form-btn-mobile {
+    margin-top: 5px;
+    width: 100%;
   }
 }

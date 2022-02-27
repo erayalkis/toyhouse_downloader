@@ -47,25 +47,49 @@ const AppForm = (props) => {
   };
 
   return (
-    <div
-      className="input-group mb-3"
-      style={{ cursor: props.loading ? "progress" : "default" }}
-    >
-      <input
-        type="text"
-        className="form-control form-control-lg app-form-input"
-        placeholder="Toyhouse Link"
-        value={queryStr}
-        onChange={(e) => setQueryStr(e.target.value)}
-      />
-      <div className="input-group-append">
+    <div>
+      <div
+        className="input-group mb-3 app-form"
+        style={{ cursor: props.loading ? "progress" : "default" }}
+      >
+        <input
+          type="text"
+          className="form-control form-control-lg app-form-input"
+          placeholder="Toyhouse Link"
+          value={queryStr}
+          onChange={(e) => setQueryStr(e.target.value)}
+        />
+        <div className="input-group-append">
+          <button
+            className="btn btn-outline-primary btn-lg app-form-btn"
+            type="button"
+            disabled={props.loading || !props.isOnline}
+            onClick={useQueue ? handleEnqueue : handleSubmit}
+          >
+            {useQueue ? "Add To Queue" : "Download"}
+          </button>
+        </div>
+      </div>
+
+      <div
+        className="mb-3 app-form-mobile"
+        style={{ cursor: props.loading ? "progress" : "default" }}
+      >
+        <input
+          type="text"
+          className="form-control form-control-lg app-form-input-mobile"
+          placeholder="Toyhouse Link"
+          value={queryStr}
+          onChange={(e) => setQueryStr(e.target.value)}
+        />
+
         <button
-          className="btn btn-outline-primary btn-lg app-form-btn"
+          className="btn btn-outline-primary btn-lg app-form-btn-mobile"
           type="button"
           disabled={props.loading || !props.isOnline}
           onClick={useQueue ? handleEnqueue : handleSubmit}
         >
-          {useQueue ? "Add To Queue" : "Download"}
+          {useQueue ? "Add to queue" : "Download"}
         </button>
       </div>
     </div>
