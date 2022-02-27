@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { useEffect } from "react";
+import ErrorContext from "../Contexts/ErrorContext";
+import LoadingContext from "../Contexts/LoadingContext";
 
 const AppStatus = (props) => {
-  const { isOnline, setIsOnline, loading, setLoading, setError } = props;
+  const { loading, setLoading } = useContext(LoadingContext);
+  const { setError } = useContext(ErrorContext);
+  const { isOnline, setIsOnline } = props;
 
   useEffect(() => {
     fetch("https://toyhouse-rails-api.herokuapp.com/app_status")

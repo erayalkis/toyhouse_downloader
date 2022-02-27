@@ -2,15 +2,7 @@ import AppStatus from "./AppStatus";
 import QueueToggler from "./QueueToggler";
 
 const Nav = (props) => {
-  const {
-    isOnline,
-    setIsOnline,
-    loading,
-    setLoading,
-    setError,
-    viewQueue,
-    setViewQueue,
-  } = props;
+  const { isOnline, setIsOnline, viewQueue, setViewQueue } = props;
 
   return (
     <div className="d-flex justify-content-between me-2 mt-2">
@@ -19,9 +11,6 @@ const Nav = (props) => {
       <AppStatus
         isOnline={isOnline}
         setIsOnline={setIsOnline}
-        loading={loading}
-        setLoading={setLoading}
-        setError={setError}
         viewQueue={viewQueue}
       />
     </div>

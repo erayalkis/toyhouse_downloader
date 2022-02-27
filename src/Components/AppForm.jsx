@@ -4,31 +4,35 @@ import HandleSubmit from "../JavaScript/HandleSubmit.js";
 import MakeRequest from "../JavaScript/MakeRequest.js";
 import { useContext } from "react";
 import QueueContext from "../Contexts/QueueContext";
+import ErrorContext from "../Contexts/ErrorContext.jsx";
+import LoadingContext from "../Contexts/LoadingContext.jsx";
 
 const AppForm = (props) => {
   const [queryStr, setQueryStr] = useState("");
-  const { useQueue, setHasError, setLoading } = props;
+  const { setError } = useContext(ErrorContext);
+  const { setLoading } = useContext(LoadingContext);
+  const { useQueue } = props;
   const { queue, setQueue } = useContext(QueueContext);
 
   const handleSubmit = () => {
     // This is honestly cursed but currently it was the easiest way to handle it
     // I'll change the code later on to make it more efficient
-    HandleSubmit(setHasError, setLoading, queryStr, setQueryStr);
+    HandleSubmit(setError, setLoading, queryStr, setQueryStr);
   };
 
   const handleEnqueue = async (e) => {
     const newId = CheckURL(queryStr);
     if (!newId) {
-      setHasError("Please paste in a valid Toyhouse link!");
+      setError("Please paste in a valid Toyhouse link!");
       return;
     }
 
     if (queue.some((character) => character.id === newId)) {
-      setHasError("Character is already in queue!");
+      setError("Character is already in queue!");
       return;
     }
 
-    const response = await MakeRequest(setHasError, setLoading, newId, true);
+    const response = await MakeRequest(setError, setLoading, newId, true);
     setLoading("Adding character to queue...");
 
     const { name, profile_img } = response;

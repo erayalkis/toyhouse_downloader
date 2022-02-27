@@ -4,13 +4,12 @@ import App from "./Components/App";
 import QueueContext from "./Contexts/QueueContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import { useContext } from "react";
 import LoadingContext from "./Contexts/LoadingContext";
 import ErrorContext from "./Contexts/ErrorContext";
 
 const Index = () => {
   const [queue, setQueue] = useState([]);
-  const [loading, setLoading] = useState("Fetching data...");
+  const [loading, setLoading] = useState("Fetching status...");
   const [error, setError] = useState(null);
 
   return (

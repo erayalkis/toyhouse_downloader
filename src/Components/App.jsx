@@ -7,13 +7,16 @@ import Footer from "./Footer";
 import Limitations from "./Limitations";
 import QueueWindow from "./QueueWindows";
 import QueueSwitch from "./QueueSwitch";
+import { useContext } from "react";
+import ErrorContext from "../Contexts/ErrorContext";
+import LoadingContext from "../Contexts/LoadingContext";
 
 function App() {
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState("Fetching status...");
   const [isOnline, setIsOnline] = useState(false);
   const [useQueue, setUseQueue] = useState(false);
   const [viewQueue, setViewQueue] = useState(false);
+  const { error } = useContext(ErrorContext);
+  const { loading } = useContext(LoadingContext);
 
   return (
     <div>
@@ -22,9 +25,6 @@ function App() {
         <Nav
           isOnline={isOnline}
           setIsOnline={setIsOnline}
-          loading={loading}
-          setLoading={setLoading}
-          setError={setError}
           viewQueue={viewQueue}
           setViewQueue={setViewQueue}
         />
@@ -34,15 +34,9 @@ function App() {
 
             <p className="display-3">Toyhouse Downloader</p>
             <p>Mass download galleries directly from Toyhouse</p>
-            <AppForm
-              setHasError={setError}
-              setLoading={setLoading}
-              loading={loading}
-              isOnline={isOnline}
-              useQueue={useQueue}
-            />
-            <Error error={error} />
-            <Loading loading={loading} />
+            <AppForm isOnline={isOnline} useQueue={useQueue} />
+            <Error />
+            <Loading />
             <p
               className="text-primary"
               style={{ display: !error && !loading ? "block" : "none" }}
