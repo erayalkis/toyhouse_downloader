@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="fixed-bottom" style={{ zIndex: -5 }}>
+    <div className="fixed-bottom site-footer" style={{ zIndex: -5 }}>
       <nav
         className="navbar navbar-expand-lg text-center"
         style={{ backgroundColor: "#eeeeeecc" }}

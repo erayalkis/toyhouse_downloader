@@ -2,10 +2,12 @@
   width: 60%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   .switch-container {
     margin-left: 10%;
     width: 200px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .queue-switch {
@@ -14,6 +16,14 @@
 
   .site-header {
     margin-top: 3px;
-    font-size: 1.5em;
+    font-size: 1.7em;
+  }
+
+  .main-container {
+    flex-direction: column-reverse;
+  }
+
+  .site-footer {
+    display: none;
   }
 }

@@ -29,20 +29,23 @@ function App() {
           setViewQueue={setViewQueue}
         />
         <div className="container text-center mt-4 col-lg-9 body-bg-main mt-4">
-          <div className="card p-5">
+          <div className="card p-5 main-container">
             <QueueSwitch setUseQueue={setUseQueue} />
 
-            <p className="display-3 site-header">Toyhouse Downloader</p>
-            <p>Mass download galleries directly from Toyhouse</p>
-            <AppForm isOnline={isOnline} useQueue={useQueue} />
-            <Error />
-            <Loading />
-            <p
-              className="text-primary"
-              style={{ display: !error && !loading ? "block" : "none" }}
-            >
-              Welcome! Paste a Toyhouse link in the input field to get started!
-            </p>
+            <div>
+              <p className="display-3 site-header">Toyhouse Downloader</p>
+              <p>Mass download galleries directly from Toyhouse</p>
+              <AppForm isOnline={isOnline} useQueue={useQueue} />
+              <Error />
+              <Loading />
+              <p
+                className="text-primary"
+                style={{ display: !error && !loading ? "block" : "none" }}
+              >
+                Welcome! Paste a Toyhouse link in the input field to get
+                started!
+              </p>
+            </div>
           </div>
 
           <small className="opacity-50">
