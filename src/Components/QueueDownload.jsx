@@ -6,7 +6,7 @@ import "../Stylesheets/QueueDownload.css";
 
 const QueueDownload = (props) => {
   const { queue, setQueue } = useContext(QueueContext);
-  const [downloading, setDownloading] = useState(false);
+  const { downloading, setDownloading } = props;
 
   useEffect(() => {
     if (!queue.length) {

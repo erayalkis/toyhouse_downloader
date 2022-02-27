@@ -34,6 +34,10 @@
   transform: translate(0);
 }
 
+.queue-window.disabled {
+  pointer-events: none;
+}
+
 .queue-header {
   padding-top: 15px;
 }
