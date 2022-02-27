@@ -28,7 +28,7 @@ function App() {
           viewQueue={viewQueue}
           setViewQueue={setViewQueue}
         />
-        <div className="container text-center mt-4 w-75 body-bg-main mt-4">
+        <div className="container text-center mt-4 col-lg-9 body-bg-main mt-4">
           <div className="card p-5">
             <QueueSwitch setUseQueue={setUseQueue} />
 
