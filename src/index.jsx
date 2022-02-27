@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import LoadingContext from "./Contexts/LoadingContext";
 import ErrorContext from "./Contexts/ErrorContext";
+import "./Stylesheets/Responsive.css";
 
 const Index = () => {
   const [queue, setQueue] = useState([]);
