@@ -32,7 +32,7 @@ function App() {
           <div className="card p-5">
             <QueueSwitch setUseQueue={setUseQueue} />
 
-            <p className="display-3">Toyhouse Downloader</p>
+            <p className="display-3 site-header">Toyhouse Downloader</p>
             <p>Mass download galleries directly from Toyhouse</p>
             <AppForm isOnline={isOnline} useQueue={useQueue} />
             <Error />

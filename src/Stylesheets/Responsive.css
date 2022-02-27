@@ -11,4 +11,9 @@
   .queue-switch {
     width: 150px;
   }
+
+  .site-header {
+    margin-top: 3px;
+    font-size: 1.5em;
+  }
 }
