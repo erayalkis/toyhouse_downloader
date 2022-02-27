@@ -53,14 +53,14 @@ const AppForm = (props) => {
     >
       <input
         type="text"
-        className="form-control form-control-lg"
+        className="form-control form-control-lg app-form-input"
         placeholder="Toyhouse Link"
         value={queryStr}
         onChange={(e) => setQueryStr(e.target.value)}
       />
       <div className="input-group-append">
         <button
-          className="btn btn-outline-primary btn-lg"
+          className="btn btn-outline-primary btn-lg app-form-btn"
           type="button"
           disabled={props.loading || !props.isOnline}
           onClick={useQueue ? handleEnqueue : handleSubmit}

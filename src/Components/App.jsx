@@ -34,7 +34,9 @@ function App() {
 
             <div>
               <p className="display-3 site-header">Toyhouse Downloader</p>
-              <p>Mass download galleries directly from Toyhouse</p>
+              <p className="site-desc">
+                Mass download galleries directly from Toyhouse
+              </p>
               <AppForm isOnline={isOnline} useQueue={useQueue} />
               <Error />
               <Loading />

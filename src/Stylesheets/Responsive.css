@@ -16,7 +16,7 @@
 
   .site-header {
     margin-top: 3px;
-    font-size: 1.7em;
+    font-size: 1.6em;
   }
 
   .main-container {
@@ -25,5 +25,9 @@
 
   .site-footer {
     display: none;
+  }
+
+  .site-desc {
+    font-size: 0.9em;
   }
 }
