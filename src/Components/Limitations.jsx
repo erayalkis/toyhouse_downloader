@@ -6,7 +6,7 @@ const Limitations = () => {
       <div className="">
         <h1 className="display-4 text-center">Limitations for this app</h1>
         <div className="mt-4 text-center">
-          <ul style={{ listStylePosition: "inside" }}>
+          <ul className="limitations-list">
             <li>
               This app will not fetch galleries for locked (private) profiles.
             </li>

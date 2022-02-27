@@ -18,20 +18,26 @@ const StartDownload = (setHasError, setLoading, setQueryStr, id) => {
         let zip = new JSZip();
         const promises = [];
 
-        response.gallery.forEach(async (link, idx) => {
+        console.log(response.gallery.length);
+        response.gallery.forEach((link, idx) => {
+          console.log("Creating promise!!!!!");
           const linkPromise = CreatePromise(link);
-          promises.push(linkPromise);
+
+          if (linkPromise !== null) promises.push(linkPromise);
 
           if (idx === response.gallery.length - 1) {
             setLoading("Saving files...");
+
+            console.log(promises);
             Promise.all(promises)
               .then((data) => {
-                data.forEach((blob, idx) =>
-                  zip.file(`${idx}.${blob.type}`, blob.data)
-                );
+                data.forEach((blob, idx) => {
+                  if (blob) zip.file(`${idx}.${blob.type}`, blob.data);
+                });
               })
               .then((data) => {
                 setLoading(null);
+                console.log("Saving files...");
                 zip.generateAsync({ type: "blob" }).then((content) => {
                   saveAs(content, `${response.name}-gallery.zip`);
                   setQueryStr("");

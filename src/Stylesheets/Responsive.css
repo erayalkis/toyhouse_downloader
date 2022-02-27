@@ -6,6 +6,10 @@
   width: 60%;
 }
 
+.limitations-list {
+  list-style-position: inside;
+}
+
 @media screen and (max-width: 850px) {
   .switch-container {
     margin-left: 10%;

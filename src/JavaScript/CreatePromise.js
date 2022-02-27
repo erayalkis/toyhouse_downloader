@@ -5,8 +5,12 @@ const CreatePromise = (link) => {
       response = await fetch(link);
     } catch (err) {
       console.log(err);
+      resolve(null);
+      return;
     }
+
     const blob = await response.blob();
+    console.log("Created promise!!");
     let dataType = link.split(".")[3];
     if (dataType.length > 4) {
       dataType = dataType.split("?")[0];
