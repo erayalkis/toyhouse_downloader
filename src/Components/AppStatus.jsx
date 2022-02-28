@@ -24,7 +24,7 @@ const AppStatus = (props) => {
   }, [setIsOnline, setLoading, setError]);
 
   return (
-    <div>
+    <div className="app-status">
       <div className="d-flex me-1">
         <h6>App Status:</h6>
 
