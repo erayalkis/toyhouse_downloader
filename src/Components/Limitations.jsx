@@ -2,10 +2,10 @@ import "../Stylesheets/Limitations.css";
 
 const Limitations = () => {
   return (
-    <div className="mt-5 col-lg-12 limitations">
-      <div className="">
-        <h1 className="display-4 text-center">Limitations for this app</h1>
-        <div className="mt-4 text-center">
+    <div className="mt-5 limitations">
+      <div className="limitations-container">
+        <h1 className="display-4">Limitations for this app</h1>
+        <div className="mt-4">
           <ul className="limitations-list">
             <li>
               This app will not fetch galleries for locked (private) profiles.

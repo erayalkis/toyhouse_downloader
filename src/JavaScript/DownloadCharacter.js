@@ -17,14 +17,14 @@ const DownloadCharacter = (id, setQueue) => {
 
         response.gallery.forEach((link, idx) => {
           const linkPromise = CreatePromise(link);
-          promises.push(linkPromise);
+          if (linkPromise !== null) promises.push(linkPromise);
 
           if (idx === response.gallery.length - 1) {
             Promise.all(promises)
               .then((data) => {
-                data.forEach((blob, idx) =>
-                  zip.file(`${idx}.${blob.type}`, blob.data)
-                );
+                data.forEach((blob, idx) => {
+                  if (blob !== null) zip.file(`${idx}.${blob.type}`, blob.data);
+                });
               })
               .then((data) => {
                 zip.generateAsync({ type: "blob" }).then((content) => {

@@ -7,7 +7,14 @@
 }
 
 .limitations-list {
+  text-align: justify;
+
   list-style-position: inside;
+}
+
+.limitations-container {
+  width: 50%;
+  text-align: center;
 }
 
 @media screen and (max-width: 850px) {
