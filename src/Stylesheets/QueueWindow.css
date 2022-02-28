@@ -13,6 +13,7 @@
   visibility: hidden;
   transition: all 1s;
   transition-property: transform, visibility;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .queue-bg {
@@ -21,7 +22,6 @@
   height: 100vh;
   top: 0;
   z-index: 2;
-  filter: blur(2px);
   visibility: hidden;
 }
 
