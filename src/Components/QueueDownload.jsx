@@ -28,7 +28,7 @@ const QueueDownload = (props) => {
   return (
     <button
       type="button"
-      className="btn queue-btn btn-outline-primary fixed-bottom"
+      className="btn queue-btn btn-outline-primary fixed-bottom w-100"
       disabled={!queue.length || downloading}
       onClick={handleClick}
     >
