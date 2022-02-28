@@ -7,7 +7,8 @@ const Footer = () => {
       >
         <p className="m-0 mx-auto">
           <em className="opacity-50">
-            Built by Kyumi on <a href="https://github.com/Blissblass">Github</a>
+            Built by Blissblass on{" "}
+            <a href="https://github.com/Blissblass">Github</a>
           </em>
         </p>
       </nav>
