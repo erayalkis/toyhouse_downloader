@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/toyhouse_downloader/static/css/main.082f17c5.chunk.css",
-    "main.js": "/toyhouse_downloader/static/js/main.a40e9dd7.chunk.js",
-    "main.js.map": "/toyhouse_downloader/static/js/main.a40e9dd7.chunk.js.map",
+    "main.css": "/toyhouse_downloader/static/css/main.0e8ca63f.chunk.css",
+    "main.js": "/toyhouse_downloader/static/js/main.2de7a9e9.chunk.js",
+    "main.js.map": "/toyhouse_downloader/static/js/main.2de7a9e9.chunk.js.map",
     "runtime-main.js": "/toyhouse_downloader/static/js/runtime-main.e79a38c6.js",
     "runtime-main.js.map": "/toyhouse_downloader/static/js/runtime-main.e79a38c6.js.map",
     "static/css/2.4659568d.chunk.css": "/toyhouse_downloader/static/css/2.4659568d.chunk.css",
@@ -10,14 +10,14 @@
     "static/js/2.2ec5ca2c.chunk.js.map": "/toyhouse_downloader/static/js/2.2ec5ca2c.chunk.js.map",
     "index.html": "/toyhouse_downloader/index.html",
     "static/css/2.4659568d.chunk.css.map": "/toyhouse_downloader/static/css/2.4659568d.chunk.css.map",
-    "static/css/main.082f17c5.chunk.css.map": "/toyhouse_downloader/static/css/main.082f17c5.chunk.css.map",
+    "static/css/main.0e8ca63f.chunk.css.map": "/toyhouse_downloader/static/css/main.0e8ca63f.chunk.css.map",
     "static/js/2.2ec5ca2c.chunk.js.LICENSE.txt": "/toyhouse_downloader/static/js/2.2ec5ca2c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e79a38c6.js",
     "static/css/2.4659568d.chunk.css",
     "static/js/2.2ec5ca2c.chunk.js",
-    "static/css/main.082f17c5.chunk.css",
-    "static/js/main.a40e9dd7.chunk.js"
+    "static/css/main.0e8ca63f.chunk.css",
+    "static/js/main.2de7a9e9.chunk.js"
   ]
 }
