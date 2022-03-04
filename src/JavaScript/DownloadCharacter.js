@@ -12,7 +12,7 @@ const DownloadCharacter = (id, setQueue) => {
     .then((response) => {
       if (response.status === 422 || response.status === 404) {
       } else {
-        let zip = new JSZip();
+        let zip = new JSZip(); // Create a new zip file for downloading
         const promises = [];
 
         response.gallery.forEach((link, idx) => {
@@ -21,7 +21,7 @@ const DownloadCharacter = (id, setQueue) => {
           if (linkPromise !== null) promises.push(linkPromise); // If promise resolved to a blob, add it to the promises array
 
           if (idx === response.gallery.length - 1) {
-            Promise.all(promises)
+            Promise.all(promises) // If we're at the last index, add each blob to the zip and download it
               .then((data) => {
                 data.forEach((blob, idx) => {
                   if (blob !== null) zip.file(`${idx}.${blob.type}`, blob.data);
