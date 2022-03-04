@@ -16,6 +16,7 @@ const DownloadCharacter = (id, setQueue) => {
         const promises = [];
 
         response.gallery.forEach((link, idx) => {
+          // Creates a promise that either resolves to a blob or a null value
           const linkPromise = CreatePromise(link);
           if (linkPromise !== null) promises.push(linkPromise);
 
