@@ -19,9 +19,7 @@ const QueueDownload = (props) => {
 
     for (let i = 0; i < queue.length; i++) {
       const currCharacter = queue[i];
-      console.log("Fetching character...");
       DownloadCharacter(currCharacter.id, setQueue);
-      console.log("Removing character...");
     }
   };
 

@@ -11,18 +11,14 @@ const StartDownload = async (setHasError, setLoading, setQueryStr, id) => {
     setHasError(response.msg);
   } else {
     setLoading("Handling the gallery...");
-    console.log(response);
 
     let zip = new JSZip();
     const promises = [];
-    console.log(response.gallery.length);
     response.gallery.forEach((link, idx) => {
-      console.log("Creating promise!!!!!");
       const linkPromise = CreatePromise(link);
       if (linkPromise !== null) promises.push(linkPromise);
       if (idx === response.gallery.length - 1) {
         setLoading("Saving files...");
-        console.log(promises);
         Promise.all(promises)
           .then((data) => {
             data.forEach((blob, idx) => {
@@ -31,7 +27,6 @@ const StartDownload = async (setHasError, setLoading, setQueryStr, id) => {
           })
           .then((data) => {
             setLoading(null);
-            console.log("Saving files...");
             zip.generateAsync({ type: "blob" }).then((content) => {
               saveAs(content, `${response.name}-gallery.zip`);
               setQueryStr("");

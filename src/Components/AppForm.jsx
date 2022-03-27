@@ -31,7 +31,6 @@ const AppForm = (props) => {
     const response = await MakeRequest(newId, { galleryOnly: true });
 
     if (!response || response.msg) {
-      console.log(response);
       const error = response.msg
         ? response.msg
         : "Something went wrong :( Check the console for more details!";
