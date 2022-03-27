@@ -1,4 +1,4 @@
-const useURLCheck = (queryStr) => {
+const useURLCheck = async (queryStr) => {
   let id = null;
   if (!queryStr.startsWith("https") && !queryStr.startsWith("toyhou.se")) {
     return null;

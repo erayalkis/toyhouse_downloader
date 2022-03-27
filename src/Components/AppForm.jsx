@@ -1,11 +1,13 @@
 import { useState } from "react";
 import CheckURL from "../JavaScript/CheckURL.js";
-import HandleSubmit from "../JavaScript/HandleSubmit.js";
 import MakeRequest from "../JavaScript/MakeRequest.js";
 import { useContext } from "react";
 import QueueContext from "../Contexts/QueueContext";
 import ErrorContext from "../Contexts/ErrorContext.jsx";
 import LoadingContext from "../Contexts/LoadingContext.jsx";
+import Promiseify from "../JavaScript/Promiseify.js";
+import SavePromisesToZip from "../JavaScript/SavePromisesToZip.js";
+import DownloadZip from "../JavaScript/DownloadZip.js";
 
 const AppForm = (props) => {
   const [queryStr, setQueryStr] = useState("");
@@ -14,8 +16,39 @@ const AppForm = (props) => {
   const { useQueue } = props;
   const { queue, setQueue } = useContext(QueueContext);
 
-  const handleSubmit = () => {
-    HandleSubmit(setError, setLoading, queryStr, setQueryStr);
+  const handleSubmit = async () => {
+    setError(null);
+    setLoading("Handling link...");
+
+    const newId = await CheckURL(queryStr);
+    if (!newId) {
+      setLoading(null);
+      setError("Please paste in a valid Toyhouse link!");
+      return;
+    }
+
+    setLoading("Downloading images..");
+    const response = await MakeRequest(newId, { galleryOnly: true });
+
+    if (!response || response.msg) {
+      console.log(response);
+      const error = response.msg
+        ? response.msg
+        : "Something went wrong :( Check the console for more details!";
+
+      setError(error);
+      setLoading("");
+      return;
+    }
+
+    setLoading("Handling the gallery...");
+    const promises = await Promiseify(response);
+    setLoading("Saving files to zip...");
+    const promisesZip = await SavePromisesToZip(promises);
+    setLoading("Downloading file...");
+    await DownloadZip(promisesZip, response);
+    setQueryStr("");
+    setLoading("");
   };
 
   const handleEnqueue = async (e) => {
@@ -30,7 +63,16 @@ const AppForm = (props) => {
       return;
     }
 
-    const response = await MakeRequest(setError, setLoading, newId, true);
+    setError("");
+    setLoading("Fetching character data...");
+    let response;
+    try {
+      response = await MakeRequest(newId, { detailsOnly: true });
+    } catch {
+      setLoading("");
+      setError("Something went wrong! :( Check the console for more details");
+      return;
+    }
     setLoading("Adding character to queue...");
 
     const { name, profile_img } = response;

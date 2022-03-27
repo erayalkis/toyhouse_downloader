@@ -1,20 +1,19 @@
-const MakeRequest = async (
-  setHasError,
-  setLoading,
-  id,
-  detailsOnly = false
-) => {
-  setHasError("");
-  setLoading("Fetching character data...");
+const MakeRequest = async (id, opts) => {
   let res;
+
   try {
     const url =
       `https://toyhouse-rails-api.herokuapp.com/character/?id=${id}` +
-      (detailsOnly ? "&details_only=true" : "");
+      (opts.galleryOnly
+        ? "&gallery_only=true"
+        : opts.detailsOnly
+        ? "&details_only=true"
+        : "");
+
     res = await fetch(url);
   } catch (err) {
-    setHasError("Something went wrong! :( Check the console for details!");
     console.log(err);
+    return null;
   }
 
   const json = await res.json();
