@@ -51,7 +51,7 @@ const AppForm = (props) => {
   };
 
   const handleEnqueue = async (e) => {
-    const newId = CheckURL(queryStr);
+    const newId = await CheckURL(queryStr);
     if (!newId) {
       setError("Please paste in a valid Toyhouse link!");
       return;
@@ -67,13 +67,18 @@ const AppForm = (props) => {
     let response;
     try {
       response = await MakeRequest(newId, { detailsOnly: true });
+      if (response.msg) throw new Error("Invalid response from server");
     } catch {
       setLoading("");
-      setError("Something went wrong! :( Check the console for more details");
+      const error = response.msg
+        ? response.msg
+        : "Something went wrong :( Check the console for more details!";
+      setError(error);
       return;
     }
     setLoading("Adding character to queue...");
 
+    console.log(response);
     const { name, profile_img } = response;
 
     const character = {
