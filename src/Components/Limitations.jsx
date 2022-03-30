@@ -10,8 +10,18 @@ const Limitations = () => {
             <li>
               This app will not fetch galleries for locked (private) profiles.
             </li>
-            <li>This app can't fetch images that have NSFW tags on them.</li>
+            <li>This app will not remove watermarks unless it's authorized.</li>
             <li>This app might not fetch galleries that have custom HTML.</li>
+            <em className="limitations-auth">
+              Psst... You can remove watermarks by authorizing{" "}
+              <a
+                href="https://toyhou.se/toyhouse_downloader"
+                target="_blank"
+                rel="noreferrer"
+              >
+                this account!
+              </a>
+            </em>
           </ul>
         </div>
       </div>
