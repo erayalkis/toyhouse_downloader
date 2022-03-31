@@ -12,7 +12,7 @@ const Limitations = () => {
             </li>
             <li>This app will not remove watermarks unless it's authorized.</li>
             <li>This app might not fetch galleries that have custom HTML.</li>
-            <em className="limitations-auth">
+            <em>
               Psst... You can remove watermarks by authorizing{" "}
               <a
                 href="https://toyhou.se/toyhouse_downloader"
