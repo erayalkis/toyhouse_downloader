@@ -1,15 +1,19 @@
+import "../config";
+
 const MakeRequest = async (id, opts) => {
   let res;
 
   try {
     const url =
-      `https://toyhouse-rails-api.herokuapp.com/character/?id=${id}` +
+      `${global.config.backend_url}/character/?id=${id}` +
       (opts.galleryOnly
         ? "&gallery_only=true"
         : opts.detailsOnly
         ? "&details_only=true"
         : "");
+    console.log(url);
 
+    console.log(global.config.backend_url);
     res = await fetch(url);
   } catch (err) {
     console.log(err);

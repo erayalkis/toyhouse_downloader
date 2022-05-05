@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import ErrorContext from "../Contexts/ErrorContext";
 import LoadingContext from "../Contexts/LoadingContext";
+import "../config";
 
 const AppStatus = (props) => {
   const { loading, setLoading } = useContext(LoadingContext);
@@ -9,7 +10,7 @@ const AppStatus = (props) => {
   const { isOnline, setIsOnline } = props;
 
   useEffect(() => {
-    fetch("https://toyhouse-rails-api.herokuapp.com/app_status")
+    fetch(`${global.config.backend_url}/app_status`)
       .then((res) => {
         if (res.ok) {
           setIsOnline(true);

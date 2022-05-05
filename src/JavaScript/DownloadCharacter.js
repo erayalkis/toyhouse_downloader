@@ -1,11 +1,10 @@
 import CreatePromise from "./CreatePromise";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
+import "../config";
 
 const DownloadCharacter = (id, setQueue) => {
-  fetch(
-    `https://toyhouse-rails-api.herokuapp.com/character/?id=${id}&gallery_only=true`
-  )
+  fetch(`${global.config.backend_url}/character/?id=${id}&gallery_only=true`)
     .then((response) => {
       return response.json();
     })
