@@ -4,7 +4,9 @@
 
 ![Main page for application](https://user-images.githubusercontent.com/80722863/147422603-55c4f824-f499-45d9-b988-b4c07c62ccc7.png)
 
-This app is a Gallery downloader for the character creating/sharing site [Toyhouse](https://toyhou.se). It uses a self built [API](https://github.com/Blissblass/toyhouse_rails_api) to fetch and then download galleries for characters.
+This app is a Gallery downloader for the character creating/sharing site [Toyhouse](https://toyhou.se). It uses a custom built [API](https://github.com/Blissblass/toyhouse_rails_api) to fetch and then download galleries for characters.
+
+Check it out [here!](https://erayalkis.github.io/toyhouse_downloader)
 
 # Usage
 
