@@ -22,9 +22,17 @@ const DownloadCharacter = (id, setQueue) => {
           if (idx === response.gallery.length - 1) {
             Promise.all(promises) // If we're at the last index, add each blob to the zip and download it
               .then((data) => {
-                data.forEach((blob, idx) => {
-                  if (blob !== null) zip.file(`${idx}.${blob.type}`, blob.data);
-                });
+                let str = data.reduce((str, blob, idx) => {
+                  if (blob) {
+                    zip.file(`${idx}.${blob.type}`, blob.data);
+                    console.log(blob);
+                    str += `${idx}. ${blob.artist.name} [ ${blob.artist.profile} ]\n`;
+                  }
+
+                  return str;
+                }, "");
+
+                zip.file("credits.txt", str);
               })
               .then((data) => {
                 zip.generateAsync({ type: "blob" }).then((content) => {
