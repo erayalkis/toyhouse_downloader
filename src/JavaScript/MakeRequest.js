@@ -5,11 +5,11 @@ const MakeRequest = async (id, opts) => {
 
   try {
     const url =
-      `${global.config.backend_url}/character/?id=${id}` +
+      `${global.config.backend_url}/character/${id}` +
       (opts.galleryOnly
-        ? "&gallery_only=true"
+        ? "/gallery"
         : opts.detailsOnly
-        ? "&details_only=true"
+        ? "/details"
         : "");
     console.log(url);
 
