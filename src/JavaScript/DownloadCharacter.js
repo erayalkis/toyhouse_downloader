@@ -5,7 +5,7 @@ import "../config";
 
 // Refactor this ASAP!!!!!!!!!!!!!!!!!!!!!!!!!!
 const DownloadCharacter = (id, setQueue) => {
-  fetch(`${global.config.backend_url}/character/?id=${id}&gallery_only=true`)
+  fetch(`${global.config.backend_url}/character/${id}/gallery`)
     .then((response) => {
       return response.json();
     })
