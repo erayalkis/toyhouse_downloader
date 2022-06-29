@@ -10,7 +10,7 @@ Check it out [here!](https://erayalkis.github.io/toyhouse_downloader)
 
 # Usage
 
-Using this downloader app is quite simple! You only need the link of the character that you wish to download the gallery of. After pasting it in the input, simply clicking "Download" will fetch all the images for the user and download them in a zip folder for you!
+Using this downloader app is quite simple! You only need the link of the character that you wish to download the gallery of. After pasting it in the input, simply clicking "Download" will fetch all the images for the user and download them in a zip folder for you! The app also includes credits for each artists and important data for each image (tagged characters, description, etc.)!
 
 ## Sample Links:
 
