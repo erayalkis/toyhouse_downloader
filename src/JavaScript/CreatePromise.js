@@ -1,4 +1,6 @@
 const CreatePromise = (imgData) => {
+  console.log("Creating promise", imgData);
+
   let promise = new Promise(async (resolve, reject) => {
     let response = null;
     try {
@@ -14,7 +16,7 @@ const CreatePromise = (imgData) => {
     if (dataType.length > 4) {
       dataType = dataType.split("?")[0];
     }
-    resolve({ data: blob, type: dataType, artist: imgData.artist });
+    resolve({ data: blob, type: dataType, artists: imgData.artists });
   });
 
   return promise;

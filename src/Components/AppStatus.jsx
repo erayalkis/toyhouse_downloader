@@ -20,6 +20,7 @@ const AppStatus = (props) => {
       .catch((err) => {
         setIsOnline(false);
         setLoading(null);
+        console.error(err);
         setError("This app is currently down :(");
       });
   }, [setIsOnline, setLoading, setError]);
