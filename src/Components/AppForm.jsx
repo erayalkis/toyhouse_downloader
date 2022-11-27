@@ -78,13 +78,12 @@ const AppForm = (props) => {
     }
 
     setLoading("Adding character to queue...");
-    console.log(response);
-    const { name, profile_img } = response;
+    const { name, image } = response;
 
     const character = {
       id: newId,
       name,
-      imgURL: profile_img,
+      image: image,
     };
 
     setQueue((old) => [...old, character]);
