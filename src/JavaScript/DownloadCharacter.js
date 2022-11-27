@@ -26,8 +26,7 @@ const DownloadCharacter = (id, setQueue) => {
                 let str = data.reduce((str, blob, idx) => {
                   if (blob) {
                     zip.file(`${idx}.${blob.type}`, blob.data);
-                    console.log(blob);
-                    blob.artist.forEach(artist => str += `${idx}. ${artist.name} [ ${artist.profile} ]\n` )
+                    blob.artists.forEach(artist => str += `${idx}. ${artist.name} [ ${artist.profile} ]\n` )
                   }
 
                   return str;
