@@ -1,9 +1,13 @@
+import { Mixpanel } from "../JavaScript/Mixpanel";
 import "../Stylesheets/QueueSwitch.css";
 
 const QueueSwitch = (props) => {
-  const { setUseQueue } = props;
+  const { useQueue, setUseQueue } = props;
 
-  const toggleQueue = () => setUseQueue((old) => !old);
+  const toggleQueue = () => {
+    setUseQueue((old) => !old);
+    Mixpanel.track('user_toggle_queue', { state: useQueue })
+  }
 
   return (
     <div className="switch-container">

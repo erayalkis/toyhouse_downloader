@@ -8,7 +8,6 @@ const SavePromisesToZip = async (promises) => {
     let str = data.reduce((str, blob, idx) => {
       if (blob) {
         zip.file(`${idx}.${blob.type}`, blob.data);
-        console.log(blob);
         blob.artists.forEach(artist => str += `${idx}. ${artist.name} [ ${artist.profile} ]\n` )
       }
 

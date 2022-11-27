@@ -11,12 +11,9 @@ const MakeRequest = async (id, opts) => {
         : opts.detailsOnly
         ? "/details"
         : "");
-    console.log(url);
 
-    console.log(global.config.backend_url);
     res = await fetch(url);
   } catch (err) {
-    console.log(err);
     return null;
   }
 

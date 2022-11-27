@@ -8,6 +8,7 @@ import LoadingContext from "../Contexts/LoadingContext.jsx";
 import Promiseify from "../JavaScript/Promiseify.js";
 import SavePromisesToZip from "../JavaScript/SavePromisesToZip.js";
 import DownloadZip from "../JavaScript/DownloadZip.js";
+import { Mixpanel } from "../JavaScript/Mixpanel.js";
 
 const AppForm = (props) => {
   const [queryStr, setQueryStr] = useState("");
@@ -27,6 +28,7 @@ const AppForm = (props) => {
       return;
     }
 
+    Mixpanel.track('user_download_start')
     setLoading("Downloading images..");
     const response = await MakeRequest(newId, { galleryOnly: true });
 
@@ -37,6 +39,7 @@ const AppForm = (props) => {
 
       setError(error);
       setLoading("");
+      Mixpanel.track('user_download_error')
       return;
     }
 
@@ -48,6 +51,7 @@ const AppForm = (props) => {
     await DownloadZip(promisesZip, response);
     setQueryStr("");
     setLoading("");
+    Mixpanel.track('user_finish_download')
   };
 
   const handleEnqueue = async (e) => {
@@ -63,6 +67,7 @@ const AppForm = (props) => {
     }
 
     setError("");
+    Mixpanel.track('user_enqueue_character_start')
     setLoading("Fetching character data...");
 
     const response = await MakeRequest(newId, { detailsOnly: true });
@@ -87,6 +92,7 @@ const AppForm = (props) => {
     };
 
     setQueue((old) => [...old, character]);
+    Mixpanel.track('user_enqueue_character_finish')
     setLoading("");
     setQueryStr("");
   };

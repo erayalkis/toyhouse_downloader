@@ -1,9 +1,13 @@
+import { Mixpanel } from "../JavaScript/Mixpanel";
 import "../Stylesheets/Toggler.css";
 
 const QueueToggler = (props) => {
   const { viewQueue, setViewQueue } = props;
 
-  const toggleView = () => setViewQueue((old) => !old);
+  const toggleView = () => {
+    setViewQueue((old) => !old);
+    Mixpanel.track('user_toggle_queue_window', { state: viewQueue })
+  }
 
   return (
     <div

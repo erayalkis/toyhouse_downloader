@@ -30,7 +30,7 @@ function App() {
         />
         <div className="container text-center mt-4 col-lg-9 body-bg-main mt-4">
           <div className="card p-5 main-container">
-            <QueueSwitch setUseQueue={setUseQueue} />
+            <QueueSwitch useQueue={useQueue} setUseQueue={setUseQueue} />
 
             <div>
               <p className="display-3 site-header">Toyhouse Downloader</p>

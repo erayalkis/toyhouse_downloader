@@ -1,12 +1,9 @@
 const CreatePromise = (imgData) => {
-  console.log("Creating promise", imgData);
-
   let promise = new Promise(async (resolve, reject) => {
     let response = null;
     try {
       response = await fetch(imgData.link);
     } catch (err) {
-      console.log(err);
       resolve(null);
       return;
     }

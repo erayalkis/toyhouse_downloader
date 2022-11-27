@@ -7,13 +7,11 @@ const useURLCheck = async (queryStr) => {
   const split = queryStr.split("/");
 
   if (queryStr.startsWith("toyhou.se")) {
-    console.log(split[2]);
     id =
       split[1] +
       (split[2] != null && split[2] !== "gallery" ? `/${split[2]}` : ""); // If tab ID exists, append it to the current id
     return id;
   } else if (queryStr.startsWith("https://toyhou.se")) {
-    console.log(split[4]);
 
     id =
       split[3] +
