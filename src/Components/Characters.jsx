@@ -11,7 +11,7 @@ const Characters = (props) => {
           key={character.id}
           id={character.id}
           name={character.name}
-          imgURL={character.imgURL}
+          imgURL={character.image}
         />
       ))}
     </div>
