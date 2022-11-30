@@ -56,7 +56,7 @@ response.gallery.forEach(async (link, idx) => {
  // so that we can use it in Promise.all()
 promises.push(linkPromise);
 ```
-When all of the images resolve, we use Promise.all() to save the images to a zip folder.
+Now, when all of the images resolve, we use Promise.all() to save the images to a zip folder.
 
 ```javascript
 // If we're at the last item,
