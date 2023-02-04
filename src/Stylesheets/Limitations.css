@@ -1,9 +1,0 @@
-@media screen and (max-width: 1024px) {
-  .limitations {
-    transform: scale(90%);
-  }
-}
-
-.limitations-auth {
-  opacity: 70%;
-}
