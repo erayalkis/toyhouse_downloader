@@ -12,7 +12,7 @@ module.exports = {
         'toyhouse-primary-300': '#dfdfdf',
         'toyhouse-dark': '#212529',
         'toyhouse-button-primary': '#008cba',
-        'toyhouse-button-dark': '#006687'
+        'toyhouse-button-secondary': '#006687'
       }
     },
   },
