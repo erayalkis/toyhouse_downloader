@@ -10,6 +10,7 @@ module.exports = {
         'toyhouse-primary-100': '#f7f7f7',
         'toyhouse-primary-200': '#e8e8e8',
         'toyhouse-primary-300': '#dfdfdf',
+        'toyhouse-priamry-400': '#aeb3b7',
         'toyhouse-dark': '#212529',
         'toyhouse-button-primary': '#008cba',
         'toyhouse-button-secondary': '#006687'
