@@ -5,7 +5,7 @@
         {{ rowNum }}
       </h1>
     </div>
-    <h1 class="pl-1 text-toyhouse-primary-400 opacity-70">{{ text }}</h1>
+    <h1 class="pl-1 text-toyhouse-primary-500 opacity-70">{{ text }}</h1>
   </div>
 </template>
 <script setup lang="ts">
