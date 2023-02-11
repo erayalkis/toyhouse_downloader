@@ -8,5 +8,5 @@ export const useErrorStore = defineStore("error", () => {
   const setError = (newValue: string) => error.value = newValue;
   const clearError = () => error.value = errorDefault;
 
-  return { setError, clearError };
+  return { error, setError, clearError };
 });
