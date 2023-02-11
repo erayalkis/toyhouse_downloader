@@ -6,6 +6,15 @@ import NoticeRow from './NoticeRow.vue';
     <template v-for="(notice, idx) in notices">
       <NoticeRow :text="notice" :row-num="idx + 1" />
     </template>
+    <NoticeRow :row-num="notices.length + 1">
+      <template #content>
+        <h1>
+          Psst... You can remove watermarks by authorizing 
+            <a class="text-toyhouse-button-primary hover:text-toyhouse-button-secondary" href="https://toyhou.se/toyhouse_downloader" target="_blank">this</a> 
+          account!
+        </h1>
+      </template>
+    </NoticeRow>
     <NoticeRow text="" :row-num="0" />
     <NoticeRow text="" :row-num="0" />
     <NoticeRow text="" :row-num="0" />

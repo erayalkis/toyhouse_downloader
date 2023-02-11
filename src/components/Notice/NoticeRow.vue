@@ -5,7 +5,10 @@
         {{ rowNum }}
       </h1>
     </div>
-    <h1 class="pl-1 text-toyhouse-primary-500 opacity-70">{{ text }}</h1>
+    <div class="pl-1 text-toyhouse-primary-500 opacity-70">
+      <h1 v-if="text" >{{ text }}</h1>
+      <slot name="content"></slot>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -13,7 +16,7 @@
   defineProps({
     text: {
       type: String,
-      default: " "
+      default: ""
     },
     rowNum: {
       type: Number,
