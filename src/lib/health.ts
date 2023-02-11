@@ -9,6 +9,7 @@ export const makeStatusQuery = () => {
   const errorStore = useErrorStore();
   const messageStore = useMessageStore();
 
+  console.log("fetching status...");
   fetch(`${url}/app_status`)
     .then(() => {
       console.log("app is up!");
