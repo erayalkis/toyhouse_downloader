@@ -7,8 +7,8 @@
       <input class="border w-full border-toyhouse-primary-300 outline-0 p-1 rounded-md rounded-r-none indent-1" placeholder="Profile URL" v-model="url" />
       <button class="bg-toyhouse-button-primary text-white transition duration-300 ease-out p-1 rounded-r-md hover:bg-toyhouse-button-secondary" @click="download">Download</button>
     </div>
-    <h1>{{ message }}</h1>
-    <h1>{{ error }}</h1>
+    <h1 v-if="message" class="text-blue-400 text-lg text-center mt-2">{{ message }}</h1>
+    <h1 v-if="error" class="text-red-400 text-lg text-center mt-2">{{ error }}</h1>
   </div>
 </template>
 <script setup lang="ts">
