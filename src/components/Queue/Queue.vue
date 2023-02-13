@@ -1,8 +1,11 @@
 <template>
-  <div v-if="shouldDisplay" class="flex gap-10 w-full absolute top-11 overflow-y-auto bg-toyhouse-button-primary py-2 px-3 xl:h-[96%] xl:left-0 xl:w-min">
-    <template v-for="character in queue">
-      <Character :data="character" />
-    </template>
+  <div class="flex justify-between w-full absolute top-11 bg-toyhouse-button-primary">
+    <div class="flex gap-10 overflow-y-auto ">
+      <template v-for="character in queue">
+        <Character :data="character" />
+      </template>
+    </div>
+    <button class="bg-toyhouse-button-primary w-2/12 absolute right-0 border-l text-white border-toyhouse-button-secondary w-full h-full">Download</button>
   </div>
 </template>
 <script setup lang="ts">
