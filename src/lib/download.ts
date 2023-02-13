@@ -8,13 +8,12 @@ import { useErrorStore } from "@/stores/error";
 import { promiseify } from "./promise";
 import { saveAs } from 'file-saver';
 
-const fetchCharacter = async (id: string) => {
+const fetchCharacterGallery = async (id: string) => {
   const { setError, clearError } = useErrorStore();
   const { clearMessage } = useMessageStore();
   const backendUrl = backendConfig.backendUrl;
 
   try {
-    console.log(id);
     const characterJSONString = await fetch(`${backendUrl}/character/${id}/gallery`);
     // Parse received json string into a POJO
     const res = await characterJSONString.json();
@@ -22,6 +21,26 @@ const fetchCharacter = async (id: string) => {
   } catch(e) {
     clearMessage();
     setError("Something went wrong while fetching the gallery!");
+    console.error(e);
+    setTimeout(() => {
+      clearError();
+    }, 2000)    
+  }
+}
+
+export const fetchCharacterDetails = async (id: string) => {
+  const { setError, clearError } = useErrorStore();
+  const { clearMessage } = useMessageStore();
+  const backendUrl = backendConfig.backendUrl;
+
+  try {
+    const characterJSONString = await fetch(`${backendUrl}/character/${id}/details`);
+    // Parse received json string into a POJO
+    const res = await characterJSONString.json();
+    return res;
+  } catch(e) {
+    clearMessage();
+    setError("Something went wrong while fetching the character!");
     console.error(e);
     setTimeout(() => {
       clearError();
@@ -55,12 +74,12 @@ const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
   return zip;
 }
 
-export const downlaodCharacter = async (id: string) => {
+export const downloadCharacter = async (id: string) => {
   if(!id) return null;
-  const { setMessage } = useMessageStore();
+  const { setMessage, clearMessage } = useMessageStore();
 
   setMessage("Fetching gallery...");
-  const characterObj = await fetchCharacter(id);
+  const characterObj = await fetchCharacterGallery(id);
   setMessage("Parsing gallery...");
   const blobs = await promiseifyGallery(characterObj.gallery);
   setMessage("Creating zip...");
@@ -68,4 +87,7 @@ export const downlaodCharacter = async (id: string) => {
   setMessage("Downloading gallery...");
   downloadZip(zip, id);
   setMessage("Gallery downloaded!");
+  setTimeout(() => {
+    clearMessage()
+  }, 1500);
 }

@@ -3,6 +3,13 @@ export interface ToyhouseProfile {
   profile: string
 }
 
+export interface CharacterDetails {
+  id: string,
+  name: string,
+  image: string,
+  owner: ToyhouseProfile
+}
+
 export interface ImageMetadata {
   date: string,
   description: string,
