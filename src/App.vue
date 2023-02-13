@@ -2,7 +2,7 @@
   <main>
     <div class="flex flex-col items-center justify-center w-screen h-screen">
       <Nav />
-      <!-- <Queue /> -->
+      <Queue />
       <Download />
       <Notice />
       <Footer />
