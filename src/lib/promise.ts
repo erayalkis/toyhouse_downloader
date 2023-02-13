@@ -13,7 +13,7 @@ export const promiseify = async (image: GalleryImage): Promise<ImageBlob> => {
       resolve(imgBlob);
     }
     catch(e) {
-      resolve({blob: null, type: null});
+      resolve({blob: new Blob(), type: null});
     }
   })
 

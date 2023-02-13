@@ -1,8 +1,12 @@
+import type { GalleryImage } from "./interfaces/toyhouse";
+import type { ImageBlob } from "./interfaces/zip";
+
+import JSZip from 'jszip';
 import { useMessageStore } from "@/stores/message"; 
 import { backendConfig } from "@/config/backendConfig";
 import { useErrorStore } from "@/stores/error";
-import type { GalleryImage } from "./interfaces/toyhouse";
 import { promiseify } from "./promise";
+import { saveAs } from 'file-saver';
 
 const fetchCharacter = async (id: string) => {
   const { setError, clearError } = useErrorStore();
@@ -31,8 +35,24 @@ const promiseifyGallery = async (gallery: Array<GalleryImage>) => {
   const blobs = (await Promise.allSettled(promises))
     // The `value` property only exists on fulfilled promises, 
       // so we use the && operator to evaluate and return the `value` property only if the status is fulfilled
-    .map(result => result.status === 'fulfilled' && result.value);
+    .map(result => result.status === 'fulfilled' && result.value)
+
   return blobs;
+}
+
+const downloadZip = async (zip: JSZip, id: string) => {
+  const blob = await zip.generateAsync({type: 'blob'});
+  saveAs(blob, `${id}.zip`)
+};
+
+const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
+  const zip = new JSZip();
+
+  blobs.forEach((blob, idx) => {
+    if(!blob || !blob.type) return;
+    zip.file(`${idx}.${blob.type}`, blob.blob);
+  })
+  return zip;
 }
 
 export const downlaodCharacter = async (id: string) => {
@@ -41,7 +61,11 @@ export const downlaodCharacter = async (id: string) => {
 
   setMessage("Fetching gallery...");
   const characterObj = await fetchCharacter(id);
-  setMessage("Gallery fetched!");
+  setMessage("Parsing gallery...");
   const blobs = await promiseifyGallery(characterObj.gallery);
-  console.log(blobs);
+  setMessage("Creating zip...");
+  const zip = await zipBlobs(blobs);
+  setMessage("Downloading gallery...");
+  downloadZip(zip, id);
+  setMessage("Gallery downloaded!");
 }

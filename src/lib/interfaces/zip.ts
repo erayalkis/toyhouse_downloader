@@ -1,5 +1,5 @@
 
 export interface ImageBlob {
-  blob: Blob | null
+  blob: Blob
   type: string | null | undefined
 }
