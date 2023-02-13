@@ -17,6 +17,7 @@ export const makeStatusQuery = () => {
     })
     .catch(() => {
       console.log("app is down :(");
+      // Check status store for code meanings
       statusStore.setStatus(0);
       messageStore.clearMessage();
       errorStore.setError("App is currently down! :(");

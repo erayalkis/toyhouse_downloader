@@ -6,6 +6,16 @@ export const getIdFromUrl = (url: string) => {
 
   const splitUrl = url.split("/");
 
-  if (splitUrl.at(-1) === "gallery") return splitUrl.at(-2);
-  return splitUrl.at(-1);
+  let id;
+
+  if (splitUrl.at(-1) === "gallery") { id = splitUrl.at(-2) } else { id = splitUrl.at(-1) };
+
+  // Use regex later on if other inconsistencies pop up in character ID's
+  if (id?.includes("#")) {
+    const poundIndex = id.indexOf("#");
+    const newId = id.slice(0, poundIndex);
+    return newId;
+  }
+
+  return id;
 }
