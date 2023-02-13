@@ -4,7 +4,12 @@ import type { ImageBlob } from "./interfaces/zip";
 export const promiseify = async (image: GalleryImage): Promise<ImageBlob> => {
   const imagePromise = new Promise<ImageBlob>(async (resolve, reject) => {
     try {
-      const url = image.link;
+      let url = image.link;
+      if (url?.includes("?")) {
+        const qMarkIndex = url.indexOf("?");
+        url = url.slice(0, qMarkIndex);
+      }
+
       const mediaType = url.split(".")?.at(-1);
       const res = await fetch(url);
       const blob = await res.blob();
