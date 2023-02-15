@@ -14,11 +14,11 @@ export const promiseify = async (image: GalleryImage): Promise<ImageBlob> => {
       const res = await fetch(url);
       const blob = await res.blob();
 
-      const imgBlob: ImageBlob = {blob, type: mediaType};
+      const imgBlob: ImageBlob = {blob, type: mediaType, artists: image.artists};
       resolve(imgBlob);
     }
     catch(e) {
-      resolve({blob: new Blob(), type: null});
+      resolve({blob: new Blob(), type: null, artists: []});
     }
   })
 

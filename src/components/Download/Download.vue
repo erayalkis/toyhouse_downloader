@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-col text-toyhouse-dark bg-toyhouse-primary-100 border border-toyhouse-primary-200 rounded-sm p-4">
+  <div class="flex-col text-toyhouse-dark bg-toyhouse-primary-100 border border-toyhouse-primary-200 rounded-sm p-10">
     <h1 class="text-xl font-medium">Download gallery</h1>
     <hr class="w-full h-px bg-toyhouse-primary-300 my-2" />
     <h1 class="font-bold mb-2">Character Profile</h1>
