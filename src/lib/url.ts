@@ -1,5 +1,5 @@
 
-const isValidUrl = (url: string) => url.startsWith("https://toyhou.se") || url.startsWith("toyhou.se");
+const isValidUrl = (url: string) => url && (url.startsWith("https://toyhou.se") || url.startsWith("toyhou.se"));
 
 export const getIdFromUrl = (url: string): string => {
   if (!isValidUrl(url)) return "";

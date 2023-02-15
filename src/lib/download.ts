@@ -7,6 +7,7 @@ import { backendConfig } from "@/config/backendConfig";
 import { useErrorStore } from "@/stores/error";
 import { promiseify } from "./promise";
 import { saveAs } from 'file-saver';
+import { useQueueStore } from "@/stores/queue";
 
 const fetchCharacterGallery = async (id: string) => {
   const { setError, clearError } = useErrorStore();
@@ -90,4 +91,14 @@ export const downloadCharacter = async (id: string) => {
   setTimeout(() => {
     clearMessage()
   }, 1500);
+}
+
+export const downloadQueue = async () => {
+  const { queue, removeCharacter } = useQueueStore();
+
+  for(let char of queue) {
+    console.log("downloading", char.id);
+    await downloadCharacter(char.id);
+    removeCharacter(char.id);
+  }
 }

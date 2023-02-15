@@ -4,7 +4,7 @@
     <hr class="w-full h-px bg-toyhouse-primary-300 my-2" />
     <h1 class="font-bold mb-2">Character Profile</h1>
     <div class="flex w-full">
-      <input class="border w-full border-toyhouse-primary-300 outline-0 p-1 rounded-md rounded-r-none indent-1" placeholder="Profile URL" v-model="url" />
+      <input class="border w-full border-toyhouse-primary-300 outline-0 p-2 rounded-md rounded-r-none indent-1" placeholder="Profile URL" v-model="url" />
       <button class="bg-toyhouse-button-primary text-white transition duration-300 ease-out p-1 rounded-r-md hover:bg-toyhouse-button-secondary disabled:bg-toyhouse-button-secondary disabled:cursor-not-allowed" 
         @click="handleCharacterRequest" 
         :disabled="status === -1 || status === 0"
@@ -68,6 +68,7 @@ import Queue from '../Queue/Queue.vue';
 
   const enqueue = async () => {
     const id = getIdFromUrl(url.value);
+    console.log(id);
     await enqueueCharacter(id);
     url.value = "";
   };

@@ -3,6 +3,8 @@ import { fetchCharacterDetails } from "@/lib/download";
 import { useMessageStore } from "@/stores/message";
 
 export const enqueueCharacter = async (id: string) => {
+  if(!id) return;
+
   const { setMessage, clearMessage } = useMessageStore();
   const { queue, addToQueue } = useQueueStore();
 
