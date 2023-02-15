@@ -2,8 +2,7 @@
   <main>
     <div class="flex flex-col items-center justify-between w-screen h-screen">
       <Nav />
-      <Download />
-      <Notice />
+      <MainContainer />
     </div>
   </main>
 </template>
@@ -13,4 +12,5 @@ import Download from './components/Download/Download.vue';
 import Queue from './components/Queue/Queue.vue';
 import Notice from "./components/Notice/Notice.vue";
 import Footer from './components/Footer/Footer.vue';
+import MainContainer from "./components/Container/MainContainer.vue";
 </script>
