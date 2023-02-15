@@ -9,7 +9,7 @@ import NoticeRow from './NoticeRow.vue';
     <NoticeRow :row-num="notices.length + 1">
       <template #content>
         <h1>
-          Psst... You can remove watermarks by authorizing 
+          Psst... You can remove these restrictions for your own characters by authorizing 
             <a class="text-toyhouse-button-primary hover:text-toyhouse-button-secondary" href="https://toyhou.se/toyhouse_downloader" target="_blank">this</a> 
           account!
         </h1>
