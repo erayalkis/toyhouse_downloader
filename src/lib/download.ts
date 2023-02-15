@@ -78,9 +78,18 @@ const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
 export const downloadCharacter = async (id: string) => {
   if(!id) return null;
   const { setMessage, clearMessage } = useMessageStore();
+  const { setError, clearError } = useErrorStore();
 
   setMessage("Fetching gallery...");
   const characterObj = await fetchCharacterGallery(id);
+  if(!characterObj.gallery) {
+    clearMessage();
+    setError("Character is invalid!");
+    setTimeout(() => {
+      clearError();
+    }, 1200)
+    return
+  }
   setMessage("Parsing gallery...");
   const blobs = await promiseifyGallery(characterObj.gallery);
   setMessage("Creating zip...");
