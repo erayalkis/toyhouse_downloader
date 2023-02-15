@@ -6,7 +6,7 @@
       <h1>App Status:</h1>
       <h1 v-if="status === 1" class="ml-2 text-green-600">Online</h1>
       <h1 v-else-if="status === 0" class="ml-2 text-red-600">Offline</h1>
-      <h1 v-else="status === -1" class="ml-2">Fetching...</h1>
+      <h1 v-else="status === -1" class="ml-2">Fetching</h1>
     </div>
   </div>
 </template>

@@ -12,11 +12,11 @@
         {{ isUsingQueue ? "Add" : "Download" }}
       </button>
     </div>
-    <div class="flex gap-3 my-3">
+    <div class="flex items-center gap-3 my-3 w-full">
       <input name="queue-checkbox" type="checkbox" @change="toggleQueue" />
       <div class="flex flex-col">
         <label class="font-medium">Use Queue</label>
-        <label for="queue-checkbox">Use a queue for downloading multiple characters at once</label>
+        <label for="queue-checkbox" class="hidden sm:block">Use a queue for downloading multiple characters at once</label>
       </div>
     </div>
     <Queue />
@@ -45,6 +45,7 @@ import Queue from '../Queue/Queue.vue';
   const message = computed(() => messageStore.message);
   const error = computed(() => errorStore.error);
   const isUsingQueue = computed(() => queueStore.viewQueue);
+  const queueLength = computed(() => queueStore.queue.length);
   const url = ref("");
 
   const toggleQueue = () => {
