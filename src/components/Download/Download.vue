@@ -19,6 +19,7 @@
         <label for="queue-checkbox">Use a queue for downloading multiple characters at once</label>
       </div>
     </div>
+    <Queue />
     <h1 v-if="message" class="text-blue-400 text-lg text-center mt-2">{{ message }}</h1>
     <h1 v-if="error" class="text-red-400 text-lg text-center mt-2">{{ error }}</h1>
   </div>
@@ -32,6 +33,7 @@
   import { useStatusStore } from '@/stores/appStatus';
   import { useQueueStore } from '@/stores/queue';
   import { enqueueCharacter } from '@/lib/queue';
+import Queue from '../Queue/Queue.vue';
 
   const statusStore = useStatusStore();
 

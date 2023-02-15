@@ -1,11 +1,9 @@
 <template>
   <main>
-    <div class="flex flex-col items-center justify-center w-screen h-screen">
+    <div class="flex flex-col items-center justify-between w-screen h-screen">
       <Nav />
-      <Queue />
       <Download />
       <Notice />
-      <Footer />
     </div>
   </main>
 </template>

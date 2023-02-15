@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full absolute top-0 text-center bg-toyhouse-dark text-toyhouse-primary-400 p-2 pl-3 text-xl">
+  <div class="flex w-full text-center bg-toyhouse-dark text-toyhouse-primary-400 p-2 pl-3 text-xl">
     <a class="text-white header" href="https://toyhou.se" target="_blank">TOYHOU.DL</a>
     
     <div class="ml-auto flex items-center">

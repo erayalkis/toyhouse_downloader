@@ -1,11 +1,13 @@
 <template>
-  <div class="flex justify-between w-full absolute top-11 bg-toyhouse-button-primary">
-    <div class="flex gap-10 overflow-y-auto ">
-      <template v-for="character in queue">
-        <Character :data="character" />
-      </template>
+  <div v-if="shouldDisplay && queue.length > 0">
+    <h1 class="text-toyhouse-dark font-medium">Queue</h1>
+    <div class="flex w-full bg-toyhouse-primary-200 border border-toyhouse-primary-400 rounded-md">
+      <div class="flex gap-10 overflow-y-auto ">
+        <template v-for="character in queue">
+          <Character :data="character" />
+        </template>
+      </div>
     </div>
-    <button class="bg-toyhouse-button-primary w-2/12 absolute right-0 border-l text-white border-toyhouse-button-secondary w-full h-full">Download</button>
   </div>
 </template>
 <script setup lang="ts">
