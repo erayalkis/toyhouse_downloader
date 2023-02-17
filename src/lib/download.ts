@@ -69,17 +69,38 @@ const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
   const zip = new JSZip();
 
   let artists = "";
+  let metadata = "";
 
   blobs.forEach((blob, idx) => {
     if(!blob || !blob.type) return;
 
-    blob.artists.forEach(artist => artists += `${idx}: ${artist.name} | ${artist.profile}\n`);
+    if (blob.artists) {
+      blob.artists.forEach(artist => artists += `${idx}: ${artist.name} | ${artist.profile}\n`);
+    }
+
+    if (blob.metadata) {
+      const mtd = blob.metadata;
+      metadata += `\n${idx}: \n\tDate: ${mtd.date}\n`;
+      if(mtd.description) {
+        metadata += "\tDescription: ";
+        const parsed_description = mtd.description.replace("Caption", "").trim();
+        metadata += parsed_description;
+        console.log(parsed_description);
+        metadata += "\n"
+      } else {
+        metadata += "\tDescription: N/A \n"
+      }
+
+      metadata += `\tTagged Characters: `;
+      mtd.tagged_characters.forEach(char => metadata += `[${char.name}, ${char.profile}] `);
+      metadata += "\n";
+    }
 
     zip.file(`${idx}.${blob.type}`, blob.blob);
   })
 
-  console.log(artists);
   zip.file("credits.txt", artists);
+  zip.file("metadata.txt", metadata);
   return zip;
 }
 
