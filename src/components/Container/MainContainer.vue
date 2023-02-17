@@ -5,6 +5,6 @@
   </div>
 </template>
 <script setup lang="ts">
-  import Download from '../Download/Download.vue';
-  import Notice from '../Notice/Notice.vue';
+import Download from "../Download/DownloadCard.vue";
+import Notice from "../Notice/NoticeContainer.vue";
 </script>

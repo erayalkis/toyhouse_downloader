@@ -6,23 +6,21 @@
       </h1>
     </div>
     <div class="pl-1 text-toyhouse-primary-500 opacity-70">
-      <h1 v-if="text" >{{ text }}</h1>
+      <h1 v-if="text">{{ text }}</h1>
       <slot name="content"></slot>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-
-  defineProps({
-    text: {
-      type: String,
-      default: ""
-    },
-    rowNum: {
-      type: Number,
-      default: undefined,
-      required: false
-    }
-  })
-
+defineProps({
+  text: {
+    type: String,
+    default: "",
+  },
+  rowNum: {
+    type: Number,
+    default: undefined,
+    required: false,
+  },
+});
 </script>

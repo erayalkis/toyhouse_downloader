@@ -10,8 +10,8 @@ export const useStatusStore = defineStore("status", () => {
   const statusDefault: number = -1;
 
   const status = ref(statusDefault);
-  const setStatus = (newValue: number) => status.value = newValue;
-  const clearStatus = () => status.value = statusDefault;
+  const setStatus = (newValue: number) => (status.value = newValue);
+  const clearStatus = () => (status.value = statusDefault);
 
   return { status, setStatus, clearStatus };
 });

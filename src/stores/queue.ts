@@ -13,11 +13,22 @@ export const useQueueStore = defineStore("queue", () => {
 
   const queue = ref(queueDefault);
   const viewQueue = ref(viewQueueDefault);
-  const setqueue = (newValue: Array<CharacterDetails>) => queue.value = newValue;
-  const addToQueue = (queueItem: CharacterDetails) => queue.value.push(queueItem);
-  const clearqueue = () => queue.value = queueDefault;
-  const removeCharacter = (id: string) => queue.value = queue.value.filter(char => char.id !== id);
-  const toggleQueueView = () => viewQueue.value = !viewQueue.value;
+  const setqueue = (newValue: Array<CharacterDetails>) =>
+    (queue.value = newValue);
+  const addToQueue = (queueItem: CharacterDetails) =>
+    queue.value.push(queueItem);
+  const clearqueue = () => (queue.value = queueDefault);
+  const removeCharacter = (id: string) =>
+    (queue.value = queue.value.filter((char) => char.id !== id));
+  const toggleQueueView = () => (viewQueue.value = !viewQueue.value);
 
-  return { viewQueue, toggleQueueView, addToQueue, queue, setqueue, clearqueue, removeCharacter };
+  return {
+    viewQueue,
+    toggleQueueView,
+    addToQueue,
+    queue,
+    setqueue,
+    clearqueue,
+    removeCharacter,
+  };
 });
