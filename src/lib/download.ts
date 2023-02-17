@@ -68,10 +68,18 @@ const downloadZip = async (zip: JSZip, id: string) => {
 const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
   const zip = new JSZip();
 
+  let artists = "";
+
   blobs.forEach((blob, idx) => {
     if(!blob || !blob.type) return;
+
+    blob.artists.forEach(artist => artists += `${idx}: ${artist.name} | ${artist.profile}\n`);
+
     zip.file(`${idx}.${blob.type}`, blob.blob);
   })
+
+  console.log(artists);
+  zip.file("credits.txt", artists);
   return zip;
 }
 
