@@ -25,7 +25,7 @@ const fetchCharacterGallery = async (id: string) => {
     console.error(e);
     setTimeout(() => {
       clearError();
-    }, 2000)    
+    }, 1200)    
   }
 }
 
@@ -45,7 +45,7 @@ export const fetchCharacterDetails = async (id: string) => {
     console.error(e);
     setTimeout(() => {
       clearError();
-    }, 2000)    
+    }, 1200)    
   }
 }
 
@@ -130,7 +130,7 @@ export const downloadCharacter = async (id: string) => {
   setMessage("Gallery downloaded!");
   setTimeout(() => {
     clearMessage()
-  }, 1500);
+  }, 1200);
 }
 
 export const downloadQueue = async () => {

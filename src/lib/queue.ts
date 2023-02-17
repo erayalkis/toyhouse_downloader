@@ -13,7 +13,7 @@ export const enqueueCharacter = async (id: string) => {
     setError("Character already in queue!");
     setTimeout(() => {
       clearError();
-    }, 1000)
+    }, 1200)
     return
   } 
 
