@@ -14,7 +14,7 @@ import { useQueueStore } from "@/stores/queue";
 const props = defineProps({
   data: {
     type: Object,
-    default: {},
+    default: () => {},
   },
 });
 

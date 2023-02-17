@@ -4,7 +4,7 @@ import NoticeRow from './NoticeRow.vue';
   <div
     class="flex flex-col mt-5 text-toyhouse-dark border border-toyhouse-primary-border rounded-sm"
   >
-    <template v-for="(notice, idx) in notices">
+    <template v-for="(notice, idx) in notices" :key="idx">
       <NoticeRow :text="notice" :row-num="idx + 1" />
     </template>
     <NoticeRow :row-num="notices.length + 1">

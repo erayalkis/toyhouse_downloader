@@ -4,7 +4,11 @@
       class="flex w-full bg-toyhouse-primary-200 border border-toyhouse-primary-400 rounded-md rounded-r-none relative w-2/3 md:w-5/6 lg:w-5/6 2xl:w-11/12"
     >
       <div class="flex items-center gap-10 overflow-y-auto px-3 py-1">
-        <template v-if="queue.length > 0" v-for="character in queue" :key="character.id">
+        <template
+          v-if="queue.length > 0"
+          v-for="character in queue"
+          :key="character.id"
+        >
           <Character :data="character" />
         </template>
         <template v-else>

@@ -2,7 +2,7 @@ import type { GalleryImage } from "./interfaces/toyhouse";
 import type { ImageBlob } from "./interfaces/zip";
 
 export const promiseify = async (image: GalleryImage): Promise<ImageBlob> => {
-  const imagePromise = new Promise<ImageBlob>(async (resolve, reject) => {
+  const imagePromise = new Promise<ImageBlob>(async (resolve) => {
     try {
       let url = image.link;
       if (url?.includes("?")) {
