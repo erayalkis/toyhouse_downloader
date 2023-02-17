@@ -6,7 +6,7 @@
           <Character :data="character" />
         </template>
         <template v-else>
-          <h1 class="sm:p-1 lg:p-5 2xl:p-12">No characters in queue!</h1>
+          <h1 class="text-sm md:text-base lg:p-5 2xl:p-12">No characters in queue!</h1>
         </template>
       </div>
     </div>
