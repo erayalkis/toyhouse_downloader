@@ -75,7 +75,9 @@ const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
     if(!blob || !blob.type) return;
 
     if (blob.artists) {
-      blob.artists.forEach(artist => artists += `${idx}: ${artist.name} | ${artist.profile}\n`);
+      artists += `\n${idx}: `
+      blob.artists.forEach(artist => artists += `[${artist.name}, ${artist.profile}]`);
+      artists += "\n";
     }
 
     if (blob.metadata) {
