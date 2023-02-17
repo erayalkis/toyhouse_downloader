@@ -14,21 +14,15 @@ export const getIdFromUrl = (url: string): string => {
     return "";
   }
 
-  const splitUrl = url.split("/");
+  let splitUrl = url.split("/");
+  // Here, we remove the /gallery part from the url to keep things easy
+  splitUrl = splitUrl.filter(ele => !ele.startsWith("gallery"));
 
-  let id;
+  const startUrl = splitUrl.indexOf("toyhou.se");
+  // After removing the gallery, since all character ID's come after the `toyhou.se` part in the url, we collect them into an array
+  const charIds = splitUrl.slice(startUrl + 1);
 
-  if (splitUrl.at(-1)?.includes("gallery")) { id = splitUrl.at(-2) } else { id = splitUrl.at(-1) };
-  if(!id) return "";
-
-  // Use regex later on if other inconsistencies pop up in character ID's
-  if (id?.includes("#")) {
-    console.log(id);
-    const poundIndex = id.indexOf("#");
-    const newId = id.slice(0, poundIndex);
-    console.log(newId);
-    return newId;
-  }
-
-  return id;
+  // Here, we join the ID's back together with a /, so that we have an ID the API can use
+  // Eg. a url like: "https:/toyhou.se/3949-character-one/49829393-tab-one" will return `3949-character-one/49829393-tab-one`
+  return charIds.join("/");
 }
