@@ -22,7 +22,6 @@ export const enqueueCharacter = async (id: string) => {
 
   setMessage("Fetching character details...");
   const character = await fetchCharacterDetails(id);
-  console.log(character);
   if(!character.name && character.image === "none") {
     clearMessage();
     setError("Character is invalid!");

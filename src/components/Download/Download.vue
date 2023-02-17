@@ -68,7 +68,6 @@ import Queue from '../Queue/Queue.vue';
 
   const enqueue = async () => {
     const id = getIdFromUrl(url.value);
-    console.log(id);
     await enqueueCharacter(id);
     url.value = "";
   };

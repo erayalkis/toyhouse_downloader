@@ -87,7 +87,6 @@ const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
         metadata += "\tDescription: ";
         const parsed_description = mtd.description.replace("Caption", "").trim();
         metadata += parsed_description;
-        console.log(parsed_description);
         metadata += "\n"
       } else {
         metadata += "\tDescription: N/A \n"
@@ -137,7 +136,6 @@ export const downloadQueue = async () => {
   const { queue, removeCharacter } = useQueueStore();
 
   for(let char of queue) {
-    console.log("downloading", char.id);
     await downloadCharacter(char.id);
     removeCharacter(char.id);
   }

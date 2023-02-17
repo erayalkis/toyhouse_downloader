@@ -12,7 +12,7 @@ export const makeStatusQuery = () => {
   console.log("fetching status...");
   fetch(`${url}/app_status`)
     .then(() => {
-      console.log("app is up!");
+      console.log("app is up! :D");
       statusStore.setStatus(1)
     })
     .catch(() => {
