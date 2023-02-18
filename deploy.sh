@@ -14,12 +14,17 @@ NC='\033[0m'
 # echo "[ ${RED}ERR${NC} ] ERROR"
 # set -e
 
-printf "\n[ ${BLUE}INFO${NC} ] BUILDING APP\n"
+printf "\n[ ${BLUE}INFO${NC} ] STARTING BUILDING PROCESS\n"
 
 npm run build && printf "\n[ ${GREEN}OK${NC} ] BUILD COMPLETE\n"
 
 printf "\n[ ${BLUE}INFO${NC} ] PUSHING GIT SUBTREE\n"
 
-# git add dist
-# git commit -m 'Add dist subtree'
-# git subtree push --prefix dist origin gh-pages
+git add dist
+git commit -m 'Add dist subtree'
+git subtree push --prefix dist origin gh-pages
+
+printf "\n[ ${GREEN}OK${NC} ] PUSH SUCCESSFUL\n"
+
+printf "\n[ ${BLUE}INFO${NC} ] VISIT https://erayalkis.github.io/toyhouse_downloader TO VIEW THE CHANGES\n"
+printf "[ ${BLUE}INFO${NC} ] (MAY TAKE A COUPLE OF MINUTES TO UPDATE)\n"
