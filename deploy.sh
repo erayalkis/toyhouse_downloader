@@ -20,11 +20,12 @@ npm run build && printf "\n[ ${GREEN}OK${NC} ] BUILD COMPLETE\n"
 
 printf "\n[ ${BLUE}INFO${NC} ] PUSHING GIT SUBTREE\n"
 
-git add dist -f
-git commit -m 'Add dist subtree'
-git subtree push --prefix dist origin gh-pages
-
-printf "\n[ ${GREEN}OK${NC} ] PUSH SUCCESSFUL\n"
+cd dist
+git init
+git add -A
+git commit -m 'Deploy commit'
+git push -f git@github.com:erayalkis/toyhouse_downloader.git master:gh-pages && "\n[ ${GREEN}OK${NC} ] PUSH SUCCESSFUL\n"
+cd -
 
 printf "\n[ ${BLUE}INFO${NC} ] VISIT https://erayalkis.github.io/toyhouse_downloader TO VIEW THE CHANGES\n"
 printf "[ ${BLUE}INFO${NC} ] (MAY TAKE A COUPLE OF MINUTES TO UPDATE)\n"

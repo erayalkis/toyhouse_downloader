@@ -11,8 +11,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "./deploy.sh"
   },
   "dependencies": {
     "file-saver": "^2.0.5",
