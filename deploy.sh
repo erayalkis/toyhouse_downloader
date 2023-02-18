@@ -20,7 +20,7 @@ npm run build && printf "\n[ ${GREEN}OK${NC} ] BUILD COMPLETE\n"
 
 printf "\n[ ${BLUE}INFO${NC} ] PUSHING GIT SUBTREE\n"
 
-git add dist
+git add dist -f
 git commit -m 'Add dist subtree'
 git subtree push --prefix dist origin gh-pages
 
