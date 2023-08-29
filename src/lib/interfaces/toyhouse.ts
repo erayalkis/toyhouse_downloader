@@ -1,6 +1,6 @@
 export interface ToyhouseProfile {
   name: string;
-  profile: string;
+  link: string;
 }
 
 export interface CharacterDetails {
