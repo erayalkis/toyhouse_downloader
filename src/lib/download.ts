@@ -81,7 +81,7 @@ const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
     if (blob.artists) {
       artists += `\n${idx}: `;
       blob.artists.forEach(
-        (artist) => (artists += `[${artist.name}, ${artist.link}]`)
+        (artist) => (artists += `[${artist.name}, ${artist.link}] `)
       );
       artists += "\n";
     }
