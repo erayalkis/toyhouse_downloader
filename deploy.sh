@@ -27,5 +27,6 @@ git commit -m 'Deploy commit'
 git push -f git@github.com:erayalkis/toyhouse_downloader.git master:gh-pages && "\n[ ${GREEN}OK${NC} ] PUSH SUCCESSFUL\n"
 cd -
 
+printf "\n[ ${GREEN}OK${NC} ] DEPLOY PROCESS COMPLETED SUCCESSFULLY"
 printf "\n[ ${BLUE}INFO${NC} ] VISIT https://erayalkis.github.io/toyhouse_downloader TO VIEW THE CHANGES\n"
 printf "[ ${BLUE}INFO${NC} ] (MAY TAKE A COUPLE OF MINUTES TO UPDATE)\n"
