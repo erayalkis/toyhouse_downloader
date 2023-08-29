@@ -81,7 +81,7 @@ const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
     if (blob.artists) {
       artists += `\n${idx}: `;
       blob.artists.forEach(
-        (artist) => (artists += `[${artist.name}, ${artist.profile}]`)
+        (artist) => (artists += `[${artist.name}, ${artist.link}]`)
       );
       artists += "\n";
     }
@@ -102,7 +102,7 @@ const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
 
       metadata += `\tTagged Characters: `;
       mtd.tagged_characters.forEach(
-        (char) => (metadata += `[${char.name}, ${char.profile}] `)
+        (char) => (metadata += `[${char.name}, ${char.link}] `)
       );
       metadata += "\n";
     }
