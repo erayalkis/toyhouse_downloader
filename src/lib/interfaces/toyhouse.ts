@@ -21,3 +21,9 @@ export interface GalleryImage {
   image_metadata: ImageMetadata;
   link: string;
 }
+
+export interface OwnershipLog {
+  date: String;
+  description: String;
+  user_link: ToyhouseProfile;
+}
