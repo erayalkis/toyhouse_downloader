@@ -1,4 +1,4 @@
-import type { GalleryImage } from "./interfaces/toyhouse";
+import type { GalleryImage, OwnershipLog } from "./interfaces/toyhouse";
 import type { ImageBlob } from "./interfaces/zip";
 
 import JSZip from "jszip";
@@ -8,6 +8,7 @@ import { useErrorStore } from "@/stores/error";
 import { promiseify } from "./promise";
 import { saveAs } from "file-saver";
 import { useQueueStore } from "@/stores/queue";
+import { useOptionsStore } from "@/stores/options";
 
 const fetchCharacterGallery = async (id: string) => {
   const { setError, clearError } = useErrorStore();
@@ -46,6 +47,28 @@ export const fetchCharacterDetails = async (id: string) => {
   } catch (e) {
     clearMessage();
     setError("Something went wrong while fetching the character!");
+    console.error(e);
+    setTimeout(() => {
+      clearError();
+    }, 1200);
+  }
+};
+
+export const fetchCharacterOwnershipLogs = async (id: string) => {
+  const { setError, clearError } = useErrorStore();
+  const { clearMessage } = useMessageStore();
+  const backendUrl = backendConfig.backendUrl;
+
+  try {
+    const characterJSONString = await fetch(
+      `${backendUrl}/character/${id}/ownership`
+    );
+    // Parse received json string into a POJO
+    const res = await characterJSONString.json();
+    return res;
+  } catch (e) {
+    clearMessage();
+    setError("Something went wrong while fetching ownership logs!");
     console.error(e);
     setTimeout(() => {
       clearError();
@@ -115,13 +138,36 @@ const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
   return zip;
 };
 
+const createLogsFile = async (zip: JSZip, id: string) => {
+  const { ownership } = await fetchCharacterOwnershipLogs(id);
+  let logsFileContent = "";
+
+  ownership.forEach((log: OwnershipLog) => {
+    console.log(log);
+    const parsedDate = log.date.replace("\n", "").trim();
+    const parsedContent = log.description
+      .replace("\n", "")
+      .replace("\n\n", " ")
+      .trim();
+
+    console.log(parsedContent);
+    const completeRow = `${parsedDate} --- ${parsedContent}\n`;
+
+    logsFileContent += completeRow;
+  });
+
+  zip.file("ownership.txt", logsFileContent);
+};
+
 export const downloadCharacter = async (id: string) => {
   if (!id) return null;
   const { setMessage, clearMessage } = useMessageStore();
   const { setError, clearError } = useErrorStore();
+  const { opts } = useOptionsStore();
 
   setMessage("Fetching gallery...");
   const characterObj = await fetchCharacterGallery(id);
+  console.log(characterObj);
   if (!characterObj.gallery) {
     clearMessage();
     setError("Character is invalid!");
@@ -134,6 +180,10 @@ export const downloadCharacter = async (id: string) => {
   const blobs = await promiseifyGallery(characterObj.gallery);
   setMessage("Creating zip...");
   const zip = await zipBlobs(blobs);
+  if (opts.downloadOwnerLogs) {
+    setMessage("Downloading ownership logs...");
+    await createLogsFile(zip, characterObj.id);
+  }
   setMessage("Downloading gallery...");
   downloadZip(zip, id);
   setMessage("Gallery downloaded!");
