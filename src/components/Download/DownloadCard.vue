@@ -19,15 +19,31 @@
         {{ isUsingQueue ? "Add" : "Download" }}
       </button>
     </div>
-    <div class="flex items-center gap-3 my-3 w-full">
-      <input name="queue-checkbox" type="checkbox" @change="toggleQueue" />
-      <div class="flex flex-col">
-        <label class="font-medium">Use Queue</label>
-        <label for="queue-checkbox" class="hidden sm:block"
-          >Use a queue for downloading multiple characters at once</label
-        >
+    <div class="flex">
+      <div class="flex items-center gap-3 my-3 w-full">
+        <input
+          name="queue-checkbox"
+          type="checkbox"
+          v-model="opts.downloadOwnerLogs"
+        />
+        <div class="flex flex-col">
+          <label class="font-medium">Download Ownership Logs</label>
+          <label for="queue-checkbox" class="hidden sm:block"
+            >Download this character's ownership logs.</label
+          >
+        </div>
+      </div>
+      <div class="flex items-center gap-3 my-3 w-full">
+        <input name="queue-checkbox" type="checkbox" @change="toggleQueue" />
+        <div class="flex flex-col">
+          <label class="font-medium">Use Queue</label>
+          <label for="queue-checkbox" class="hidden sm:block"
+            >Use a queue for downloading multiple characters at once</label
+          >
+        </div>
       </div>
     </div>
+
     <Queue />
     <h1 v-if="message" class="text-blue-400 text-lg text-center mt-2">
       {{ message }}
@@ -47,10 +63,14 @@ import { useStatusStore } from "@/stores/appStatus";
 import { useQueueStore } from "@/stores/queue";
 import { enqueueCharacter } from "@/lib/queue";
 import Queue from "../Queue/QueueContainer.vue";
+import { useOptionsStore } from "@/stores/options";
+import { storeToRefs } from "pinia";
 
 const statusStore = useStatusStore();
+const optsStore = useOptionsStore();
 
 const status = computed(() => statusStore.status);
+const { opts } = storeToRefs(optsStore);
 
 const messageStore = useMessageStore();
 const errorStore = useErrorStore();
