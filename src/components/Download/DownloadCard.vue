@@ -22,23 +22,25 @@
     <div class="flex">
       <div class="flex items-center gap-3 my-3 w-full">
         <input
-          name="queue-checkbox"
+          id="ownership-checkbox"
           type="checkbox"
           v-model="opts.downloadOwnerLogs"
         />
         <div class="flex flex-col">
-          <label class="font-medium">Download Ownership Logs</label>
-          <label for="queue-checkbox" class="hidden sm:block"
+          <label for="ownership-checkbox" class="font-medium"
+            >Download Logs</label
+          >
+          <label for="ownership-checkbox" class="hidden sm:block"
             >Download this character's ownership logs.</label
           >
         </div>
       </div>
       <div class="flex items-center gap-3 my-3 w-full">
-        <input name="queue-checkbox" type="checkbox" @change="toggleQueue" />
+        <input id="queue-checkbox" type="checkbox" @change="toggleQueue" />
         <div class="flex flex-col">
-          <label class="font-medium">Use Queue</label>
+          <label for="queue-checkbox" class="font-medium">Use Queue</label>
           <label for="queue-checkbox" class="hidden sm:block"
-            >Use a queue for downloading multiple characters at once</label
+            >Use a queue for downloading multiple characters</label
           >
         </div>
       </div>
