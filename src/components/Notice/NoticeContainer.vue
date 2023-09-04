@@ -22,7 +22,7 @@ import NoticeRow from './NoticeRow.vue';
         </h1>
       </template>
     </NoticeRow>
-    <NoticeRow :row-num="notices.length + 1">
+    <!-- <NoticeRow :row-num="notices.length + 1">
       <template #content>
         <h1>
           Alternatively, download the desktop app
@@ -34,7 +34,7 @@ import NoticeRow from './NoticeRow.vue';
           >
         </h1>
       </template>
-    </NoticeRow>
+    </NoticeRow> -->
   </div>
 </template>
 <script setup lang="ts">
