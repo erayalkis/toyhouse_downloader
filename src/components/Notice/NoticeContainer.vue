@@ -22,6 +22,21 @@ import NoticeRow from './NoticeRow.vue';
         </h1>
       </template>
     </NoticeRow>
+    <NoticeRow :row-num="notices.length + 2">
+      <template #content>
+        <h1>
+          ...or, alternatively, to avoid fiddling with image settings, download
+          the desktop app
+          <a
+            class="text-toyhouse-button-primary hover:text-toyhouse-button-secondary"
+            href="https://github.com/erayalkis/toyhouse_api/releases/latest"
+            target="_blank"
+            >here!</a
+          >
+        </h1>
+      </template>
+    </NoticeRow>
+
     <!-- <NoticeRow :row-num="notices.length + 1">
       <template #content>
         <h1>
