@@ -20,8 +20,26 @@ export const getIdFromUrl = (url: string): string => {
   splitUrl = splitUrl.filter((ele) => !ele.startsWith("gallery"));
 
   const startUrl = splitUrl.indexOf("toyhou.se");
+  if (startUrl === -1) {
+    const { setError, clearError } = useErrorStore();
+    setError("Invalid URL format!");
+    setTimeout(() => {
+      clearError();
+    }, 1200);
+    return "";
+  }
+
   // After removing the gallery, since all character ID's come after the `toyhou.se` part in the url, we collect them into an array
   const charIds = splitUrl.slice(startUrl + 1);
+
+  if (charIds.length === 0) {
+    const { setError, clearError } = useErrorStore();
+    setError("No character ID found in URL!");
+    setTimeout(() => {
+      clearError();
+    }, 1200);
+    return "";
+  }
 
   // Here, we join the ID's back together with a /, so that we have an ID the API can use
   // Eg. a url like: "https:/toyhou.se/3949-character-one/49829393-tab-one" will return `3949-character-one/49829393-tab-one`

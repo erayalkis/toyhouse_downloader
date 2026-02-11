@@ -9,18 +9,15 @@ export const makeStatusQuery = () => {
   const errorStore = useErrorStore();
   const messageStore = useMessageStore();
 
-  console.log("fetching status...");
   statusStore.setStatus(0);
-  // fetch(`${url}/app_status`)
-  //   .then(() => {
-  //     console.log("app is up! :D");
-  //     statusStore.setStatus(1);
-  //   })
-  //   .catch(() => {
-  //     console.log("app is down :(");
-  //     // Check status store for code meanings
-  //     statusStore.setStatus(0);
-  //     messageStore.clearMessage();
-  //     errorStore.setError("App is currently down! :(");
-  //   });
+  fetch(`${url}/app_status`)
+    .then(() => {
+      statusStore.setStatus(1);
+    })
+    .catch(() => {
+      // Check status store for code meanings
+      statusStore.setStatus(0);
+      messageStore.clearMessage();
+      errorStore.setError("App is currently down! :(");
+    });
 };

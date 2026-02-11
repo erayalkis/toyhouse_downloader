@@ -16,11 +16,14 @@ const fetchCharacterGallery = async (id: string) => {
   const backendUrl = backendConfig.backendUrl;
 
   try {
-    const characterJSONString = await fetch(
+    const response = await fetch(
       `${backendUrl}/character/${id}/gallery`
     );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     // Parse received json string into a POJO
-    const res = await characterJSONString.json();
+    const res = await response.json();
     return res;
   } catch (e) {
     clearMessage();
@@ -29,6 +32,7 @@ const fetchCharacterGallery = async (id: string) => {
     setTimeout(() => {
       clearError();
     }, 1200);
+    return null;
   }
 };
 
@@ -38,11 +42,14 @@ export const fetchCharacterDetails = async (id: string) => {
   const backendUrl = backendConfig.backendUrl;
 
   try {
-    const characterJSONString = await fetch(
+    const response = await fetch(
       `${backendUrl}/character/${id}/details`
     );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     // Parse received json string into a POJO
-    const res = await characterJSONString.json();
+    const res = await response.json();
     return res;
   } catch (e) {
     clearMessage();
@@ -51,6 +58,7 @@ export const fetchCharacterDetails = async (id: string) => {
     setTimeout(() => {
       clearError();
     }, 1200);
+    return null;
   }
 };
 
@@ -60,11 +68,14 @@ export const fetchCharacterOwnershipLogs = async (id: string) => {
   const backendUrl = backendConfig.backendUrl;
 
   try {
-    const characterJSONString = await fetch(
+    const response = await fetch(
       `${backendUrl}/character/${id}/ownership`
     );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     // Parse received json string into a POJO
-    const res = await characterJSONString.json();
+    const res = await response.json();
     return res;
   } catch (e) {
     clearMessage();
@@ -73,6 +84,7 @@ export const fetchCharacterOwnershipLogs = async (id: string) => {
     setTimeout(() => {
       clearError();
     }, 1200);
+    return null;
   }
 };
 
@@ -139,18 +151,20 @@ const zipBlobs = async (blobs: (false | ImageBlob)[]): Promise<JSZip> => {
 };
 
 const createLogsFile = async (zip: JSZip, id: string) => {
-  const { ownership } = await fetchCharacterOwnershipLogs(id);
+  const ownershipData = await fetchCharacterOwnershipLogs(id);
+  if (!ownershipData?.ownership) {
+    return;
+  }
+
   let logsFileContent = "";
 
-  ownership.forEach((log: OwnershipLog) => {
-    console.log(log);
+  ownershipData.ownership.forEach((log: OwnershipLog) => {
     const parsedDate = log.date.replace("\n", "").trim();
     const parsedContent = log.description
       .replace("\n", "")
       .replace("\n\n", " ")
       .trim();
 
-    console.log(parsedContent);
     const completeRow = `${parsedDate} --- ${parsedContent}\n`;
 
     logsFileContent += completeRow;
@@ -167,8 +181,7 @@ export const downloadCharacter = async (id: string) => {
 
   setMessage("Fetching gallery...");
   const characterObj = await fetchCharacterGallery(id);
-  console.log(characterObj);
-  if (!characterObj.gallery) {
+  if (!characterObj?.gallery) {
     clearMessage();
     setError("Character is invalid!");
     setTimeout(() => {
